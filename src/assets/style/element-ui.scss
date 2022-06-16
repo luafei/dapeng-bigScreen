@@ -1,0 +1,356 @@
+//按钮
+.dp-btn-plain {
+    width: 70px;
+    height: 22px;
+    border: 1px solid rgba(50, 253, 246, .6);
+    border-radius: 0px;
+    padding: 0;
+    background: none;
+    font-size: 10px;
+    color: #fff;
+    &:hover,
+    &:focus {
+        background: none;
+        color: #36B3B2;
+        border-color: #36B3B2;
+    }
+    &.is-disabled,
+    &.is-disabled:hover {
+        background: none;
+        border-color: #36B3B2;
+    }
+}
+
+.dp-input {
+    width: 91px;
+    height: 22px;
+    border-radius: 0px!important;
+    background: none;
+    .el-input__inner {
+        height: 22px;
+        background: none;
+        color: #fff;
+        font-size: 10px;
+        border-radius: 1px;
+        border: 1px solid rgba(50, 253, 246, .6);
+        padding-right: 15px;
+        padding-left: 5px;
+    }
+    .el-input__suffix {
+        width: 16px;
+        line-height: 22px;
+        // right: 0!important;
+        .el-input__icon {
+            line-height: 16px;
+        }
+    }
+}
+
+//下拉框
+.dp-select {
+    width: 92px;
+    height: 22px;
+    border-radius: 0px!important;
+    background: none;
+    .el-input {
+        .el-input__inner {
+            height: 22px;
+            padding-left: 5px;
+            padding-right: 22px;
+            background: none;
+            color: #fff;
+            font-size: 10px;
+            border-radius: 1px;
+            border: 1px solid rgba(50, 253, 246, .6);
+        }
+        .el-input__suffix {
+            position: absolute;
+            right: 0;
+            top: -1px;
+            .el-input__icon {
+                line-height: 22px;
+            }
+        }
+    }
+    .is-focus {
+        .el-input__inner {
+            border-color: #36B3B2!important;
+        }
+    }
+}
+//下拉2
+.dp-selects {
+    width: 120px;
+    height: 22px;
+    border-radius: 0px!important;
+    background: none;
+    .el-input {
+        .el-input__inner {
+            height: 22px;
+            padding-left: 5px;
+            padding-right: 22px;
+            background: none;
+            color: #fff;
+            font-size: 10px;
+            border-radius: 1px;
+            border: 1px solid rgba(50, 253, 246, .6);
+        }
+        .el-input__suffix {
+            position: absolute;
+            right: 0;
+            top: -1px;
+            .el-input__icon {
+                line-height: 22px;
+            }
+        }
+    }
+    .is-focus {
+        .el-input__inner {
+            border-color: #36B3B2!important;
+        }
+    }
+}
+.dp-select-popper {
+    margin-top: 4px!important;
+    background: rgba(11, 18, 30, 0.9);
+    border: 1px solid rgba(54, 179, 178, 1);
+    border-radius: 3px;
+    .el-select-dropdown__list {
+        .el-select-dropdown__item {
+            color: rgba(255, 255, 255, .3);
+            font-size: 12px;
+        }
+        .el-select-dropdown__item.hover {
+            background: none;
+            color: #fff;
+        }
+    }
+    .popper__arrow {
+        display: none;
+    }
+}
+//222
+.dp-select-poppers {
+    margin-top: 4px!important;
+    background: rgba(11, 18, 30, 0.9);
+    border: 1px solid rgba(54, 179, 178, 1);
+    border-radius: 3px;
+    .el-select-dropdown__list {
+        .el-select-dropdown__item {
+            color: rgba(255, 255, 255, .3);
+            font-size: 12px;
+        }
+        .el-select-dropdown__item.hover {
+            background: none;
+            color: #fff;
+        }
+    }
+    .popper__arrow {
+        display: none;
+    }
+}
+//字期选择器
+.dp-date-picker {
+    width: 200px!important;
+    height: 22px;
+    border: 1px solid rgba(50, 253, 246, .6);
+    background: none;
+    border-radius: 0px;
+    padding: 4px!important;
+    .el-input__inner {
+        font-size: 12px;
+        padding: 2px;
+        height: 22px;
+        color: #fff;
+    }
+    .el-range-input {
+        font-size: 12px;
+        line-height: 18px;
+        background: none;
+        color: #fff;
+    }
+    .el-range-separator {
+        width: 14px;
+        font-size: 12px;
+        line-height: 10px;
+        color: #fff;
+    }
+    .el-range__icon {
+        line-height: 12px;
+    }
+    .el-range__close-icon {
+        line-height: 12px;
+    }
+    &.is-active,
+    &.is-active:hover {
+        border-color: rgba(50, 253, 246, .6);
+    }
+}
+
+.dp-date {
+    width: 140px!important;
+    height: 22px;
+    border: 1px solid rgba(50, 253, 246, .6);
+    background: none;
+    border-radius: 0px;
+    padding: 2px 4px!important;
+    .el-input__inner {
+        width: 100%;
+        height: 100%;
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 12px;
+        padding: 1px 4px 0 22px!important;
+    }
+    .el-input__prefix {}
+    .el-input__icon {
+        line-height: 22px;
+        text-align: left;
+    }
+}
+
+.dp-picker-popper {
+    background: rgba(11, 18, 30, 0.8);
+    border: 1px solid rgba(54, 179, 178, 1);
+    border-radius: 4px;
+    margin-bottom: 5px!important;
+    .el-date-table,
+    .el-month-table {
+        tr {
+            th {
+                color: #fff;
+                border-color: rgba(54, 179, 178, .2);
+            }
+        }
+        td {
+            span {
+                color: #fff;
+            }
+            .call {
+                &:hover {
+                    color: #fff;
+                }
+            }
+        }
+        .in-range {
+            div {
+                background: rgba(54, 179, 178, .16);
+                &:hover {
+                    background: #36B3B2;
+                    span {
+                        color: #fff;
+                    }
+                }
+            }
+        }
+        .start-date,
+        .end-date {
+            span,
+            .cell {
+                background-color: #36B3B2;
+            }
+        }
+        .available:hover,
+        td.today {
+            span {
+                color: #fff;
+            }
+        }
+    }
+    .el-date-range-picker__header {
+        color: #fff;
+    }
+    .el-picker-panel__body-wrapper {
+        .el-picker-panel__sidebar {
+            background: rgba(11, 18, 30, 0.8);
+            .el-picker-panel__shortcut {
+                color: #fff;
+                &:hover {
+                    color: #36B3B2;
+                }
+            }
+        }
+    }
+    .popper__arrow {
+        display: none;
+    }
+}
+
+//头部下拉二级菜单
+.titleLine {
+    .el-carousel__arrow {
+        color: transparent;
+    }
+}
+
+.traffic-title {
+    cursor: pointer;
+    color: #ffffff;
+    .el-icon-arrow-down {
+        display: none;
+    }
+}
+
+.active .traffic-title {
+    background: linear-gradient(180deg, rgba(227, 229, 229, 1) 0%, rgba(56, 206, 223, 1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+//     li:nth-of-type(1){
+//        padding-top: 10px;
+//     }
+.titleUl {
+    .el-dropdown {
+        display: inline-block;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 43px;
+        line-height: 43px;
+    }
+}
+
+.traffic-title:hover {
+    background: linear-gradient(180deg, rgba(227, 229, 229, 1) 0%, rgba(56, 206, 223, 1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.traffic-pull-down {
+    background: rgba(2, 19, 45, 0.49);
+    border-color: #085dba;
+    margin: 2px 0 0 20px;
+    padding: 2px 3px;
+    //    transform: translate(-401px,-13px);
+    transform: translate(18px, -10px);
+    border-radius: 0;
+    .el-dropdown-menu__item {
+        text-align: center;
+        color: #fff;
+        padding: 0 13px 0 13px;
+    }
+    .el-dropdown-menu__item a {
+        text-align: center;
+        color: #fff;
+    }
+    .el-dropdown-menu__item:hover {
+        background: linear-gradient(180deg, rgba(227, 229, 229, 1) 0%, rgba(56, 206, 223, 1) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        border: none;
+    }
+    .popper__arrow {
+        display: none;
+    }
+}
+
+.dp-el-pagination {
+    text-align: center;
+    .btn-prev,
+    .el-pager li,
+    .btn-next {
+        background: none!important;
+    }
+}

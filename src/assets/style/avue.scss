@@ -1,0 +1,181 @@
+.dp-avue-del-menu {
+    .avue-crud__menu {
+        display: none;
+    }
+}
+
+.dp-avue-pagination {
+    .el-pagination {
+        .el-pagination__total,
+        .el-pagination__sizes,
+        .el-pagination__jump {
+            color: #fff;
+        }
+        .el-input__inner {
+            color: #fff;
+        }
+        .el-pager{
+            li{
+                background: none;
+                border: 1px solid #0ab8eb;
+                color: #fff;
+            }
+        }
+        .btn-prev,.btn-next{
+            background: none;
+            border: 1px solid #0ab8eb;
+            color: #fff;
+        }
+    }
+}
+
+.el-select-dropdown__list{
+    .el-select-dropdown__item{
+        color: #fff;
+    }
+    .el-select-dropdown__item.hover, .el-select-dropdown__item:hover{
+        background: #409EFF;
+    }
+}
+
+.tab-dialog {
+    @media screen and (min-width: 6000px) {
+        .el-dialog {
+            width: 1300px;
+        }
+    }
+    @media screen and (max-width: 6000px) {
+        .el-dialog {
+            width: 55%;
+        }
+    }
+    .el-dialog__header {
+        width: 100%;
+        position: relative;
+        height: 40px;
+        background: rgba(15, 75, 99, 0.7);
+        .el-dialog__headerbtn .el-dialog__close {
+            color: #fffefe;
+            line-height: 40px;
+        }
+        .el-dialog__headerbtn {
+            line-height: 40px;
+            position: absolute;
+            top: 0;
+            right: 10px;
+        }
+    }
+    .el-dialog__title {
+        background: rgba(15, 75, 99, 0.7);
+        color: #fffefe;
+        position: absolute;
+        top: 0;
+        left: 50px;
+        text-align: center;
+        line-height: 40px;
+        height: 40px;
+    }
+    .el-button .search-btn .el-button--primary .el-button--small {
+        background: #0e98c6;
+        border: 2px solid #43d4ff;
+        color: #ffffff;
+        font-size: 12px;
+    }
+    .el-input__inner {
+        height: 30px;
+        width: 100%;
+        background: #0d455c;
+        color: #06b4e6;
+        border: 2px solid #0ab8eb;
+        opacity: 0.5;
+    }
+    .el-table--enable-row-hover .el-table__body tr:hover>td {
+        background-color: #212e3e;
+        background: red;
+    }
+    .el-dialog {
+        background: rgba(13, 69, 92, 0.7);
+        border: 1px solid rgba(10, 184, 235, 1);
+        color: #fff;
+        .el-table {
+            background: transparent;
+            border-color: #0ab8eb;
+            border-width: 1px;
+            border-style: solid;
+            th.is-leaf {
+                border-bottom-color: transparent;
+            }
+            .avue-empty__desc {
+                color: #fff;
+            }
+        }
+        .el-table__fixed::before {
+            height: 0px;
+        }
+        .el-dialog__body {
+            padding: 30px 60px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+    }
+    .el-table__body tr.hover-row.current-row>td,
+    .el-table__body tr.hover-row.el-table__row--striped.current-row>td,
+    .el-table__body tr.hover-row.el-table__row--striped>td,
+    .el-table__body tr.hover-row>td {
+        background: rgba(13, 69, 92, 1);
+    }
+    .el-loading-mask {
+        background: rgba(255, 255, 255, 0.3);
+    }
+    .el-input__icon {
+        height: 100%;
+        line-height: 0;
+        color: #fff;
+    }
+    .el-table tr {
+        background: transparent;
+    }
+    .el-table td,
+    .el-table th {
+        text-align: center;
+        background: transparent;
+        border-bottom: 0px;
+        color: #fff;
+    }
+    .el-table--border::after,
+    .el-table--group::after {
+        right: 1px;
+    }
+    .el-button--mini,
+    .el-button--mini.is-round {
+        padding: 2px 6px;
+    }
+    .el-table {
+        font-size: 12px;
+        background: transparent;
+        border: 1px solid rgba(10, 184, 235, 1);
+        .avue-empty__desc {
+            color: #fff;
+        }
+        &::before {
+            height: 0px;
+        }
+    }
+    .el-table td {
+        padding: 2px;
+    }
+    .el-date-editor.el-input {
+        width: 46%;
+        margin-left: 10px;
+    }
+    .el-table__body-wrapper .is-scrolling-right {
+        background: red;
+        color: #0d455c;
+    }
+}
+
+.tabdialogform {
+    .avue-crud__img {
+        cursor: pointer;
+    }
+}

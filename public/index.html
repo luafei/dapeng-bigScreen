@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <!-- <link rel="dns-prefetch" href="//172.21.112.113:9018"> -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <!-- <meta name="referrer" content="no-referrer" /> -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> -->
+    <title>
+      <%= htmlWebpackPlugin.options.title%>
+    </title>
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
+    <!-- <link
+      rel="stylesheet"
+      href="<%= htmlWebpackPlugin.options.mapUrl %>/LongMap/LongMap.css"
+    />
+    <link
+      rel="stylesheet"
+      href="<%= htmlWebpackPlugin.options.mapUrl %>/LongMap/mapFn/mapFn.css"
+    /> -->
+    <script>
+      document.addEventListener("DOMContentLoaded", (event) => {
+        console.log(event);
+      });
+    </script>
+    <script>
+      var dashboardFlexible = {};
+      dashboardFlexible.init = function(screenRatioByDesign = 16 / 9) {
+        let docEle = document.documentElement;
+
+        function setHtmlFontSize() {
+          var screenRatio = docEle.clientWidth / docEle.clientHeight;
+          var fontSize =
+            ((screenRatio > screenRatioByDesign
+              ? screenRatioByDesign / screenRatio
+              : 1) *
+              docEle.clientWidth) /
+            10;
+          // 限制最小字体
+          // fontSize = fontSize < 150 ? 170 : fontSize;
+          // 限制最大字体
+          // fontSize = fontSize > 350 ? 380 : fontSize;
+          if (docEle.clientWidth >= 4000) {
+            fontSize = 380;
+          } else {
+            if (docEle.clientWidth >= 3000) {
+              fontSize = 260;
+            } else {
+              if (docEle.clientWidth >= 1900) {
+                fontSize = 180;
+              } else {
+                if (docEle.clientWidth >= 1400) {
+                  fontSize = 150;
+                } else {
+                  if (docEle.clientWidth >= 1200) {
+                    fontSize = 140;
+                  }
+                }
+              }
+            }
+          }
+          docEle.style.fontSize = fontSize.toFixed(3) + "px";
+        }
+        setHtmlFontSize();
+
+        window.addEventListener("resize", setHtmlFontSize);
+      };
+    </script>
+    <script>
+      dashboardFlexible.init(16 / 9);
+    </script>
+  </head>
+
+  <body>
+    <noscript>
+      <strong
+        >We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work
+        properly without JavaScript enabled. Please enable it to
+        continue.</strong
+      >
+    </noscript>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+    <!-- <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+    <script src="./jquery.min.js"></script>
+    <script
+      type="text/javascript"
+      src="<%= htmlWebpackPlugin.options.mapUrl %>/LongMap/LM.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="<%= htmlWebpackPlugin.options.mapUrl %>/LongMap/LongMap.js"
+    ></script>
+
+
+    <!-- gix.js 和 mapFn引入顺序不能改动，先加载gjx.js 后加载mapFn.js -->
+    <!-- <script src="<%= htmlWebpackPlugin.options.mapUrl %>/LongMap/gjx.js"></script>
+    <script src="<%= htmlWebpackPlugin.options.mapUrl %>/LongMap/mapFn/mapFn.js"></script> -->
+    <!-- 指北针，地图恢复定位 -->
+    <!-- <script src="<%= htmlWebpackPlugin.options.mapUrl %>/LongMap/ViewShed.min.js"></script> -->
+
+    <script src="./jsencrypt.min.js"></script>
+    <script src="./jsWebControl-1.0.0.min.js"></script>
+  </body>
+</html>

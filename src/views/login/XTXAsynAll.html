@@ -1,0 +1,2024 @@
+<html>
+
+<head>
+    <title>中文测试</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <script src="XTXSAB.js"></script>
+    <script>
+
+        window.onload = function () {
+            init(function () {
+                alert("success");
+            }, function () {
+                alert("fail");
+            });
+        }
+
+
+        function $val(id) {
+            var dom_node = document.getElementById(id);
+            return dom_node.value;
+        }
+
+        function call_back(data) {
+            alert(data.retVal);
+
+            var dom_node = document.getElementById("ret_data");
+            dom_node.value = data.retVal;
+        }
+
+        function string2bool(bool_str) {
+            return (bool_str === "true");
+        }
+
+        function string2number(number_str) {
+            return Number(number_str);
+        }
+    </script>
+
+
+</head>
+
+<body>
+    <div>
+        <input type="text" id="ret_data" />
+    </div>
+    <div>
+        <p>
+            <label>SOF_SetSignMethod</label>
+        <p>
+            <label>SignMethod(接口原型 LONG SOF_SetSignMethod(LONG SignMethod)
+                功能描述 设置签名算法。
+                参数 SignMethod [IN] 签名算法
+                返回值 成功返回 0，失败返回其他
+                备注
+                目前可支持的签名算法 详见附录。如果不调用本接口则RSA类型的证书默认
+                使用SHA1_RSA算法，SM2类型的证书默认使用SM3_SM2算法。如果调用
+                XTXAppCOM 控件接口说明文档
+                第 9页 共 88页
+                了本接口，则不判断证书类型直接使用已经设置的算法。)</label>
+            <input type="text" id="SOF_SetSignMethod_SignMethod" value="" />
+        </p>
+
+        <p>
+            <input type="button"
+                onclick="SOF_SetSignMethod(string2number(SOF_SetSignMethod_SignMethod.value),call_back)" value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_GetSignMethod</label>
+        <p>
+            <input type="button" onclick="SOF_GetSignMethod(call_back)" value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_SetEncryptMethod</label>
+        <p>
+            <label>EncryptMethod</label>
+            <input type="text" id="SOF_SetEncryptMethod_EncryptMethod" value="" />
+        </p>
+
+        <p>
+            <input type="button"
+                onclick="SOF_SetEncryptMethod(string2number(SOF_SetEncryptMethod_EncryptMethod.value),call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_GetEncryptMethod</label>
+        <p>
+            <input type="button" onclick="SOF_GetEncryptMethod(call_back)" value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_GetUserList</label>
+        <p>
+            <input type="button" onclick="SOF_GetUserList(call_back)" value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_ExportUserCert</label>
+        <p>
+            <label>CertID</label>
+            <input type="text" id="SOF_ExportUserCert_CertID" value="" />
+        </p>
+
+        <p>
+            <input type="button" onclick="SOF_ExportUserCert(SOF_ExportUserCert_CertID.value,call_back)" value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_Login</label>
+        <p>
+            <label>CertID</label>
+            <input type="text" id="SOF_Login_CertID" value="" />
+        </p>
+        <p>
+            <label>PassWd</label>
+            <input type="text" id="SOF_Login_PassWd" value="" />
+        </p>
+        <p>
+            <input type="button" onclick="SOF_Login(SOF_Login_CertID.value,SOF_Login_PassWd.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_GetPinRetryCount</label>
+        <p>
+            <label>CertID</label>
+            <input type="text" id="SOF_GetPinRetryCount_CertID" value="" />
+        </p>
+
+        <p>
+            <input type="button" onclick="SOF_GetPinRetryCount(SOF_GetPinRetryCount_CertID.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_ChangePassWd</label>
+        <p>
+            <label>CertID</label>
+            <input type="text" id="SOF_ChangePassWd_CertID" value="" />
+        </p>
+        <p>
+            <label>oldPass</label>
+            <input type="text" id="SOF_ChangePassWd_oldPass" value="" />
+        </p>
+        <p>
+            <label>newPass</label>
+            <input type="text" id="SOF_ChangePassWd_newPass" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="SOF_ChangePassWd(SOF_ChangePassWd_CertID.value,SOF_ChangePassWd_oldPass.value,SOF_ChangePassWd_newPass.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_GetCertInfo</label>
+        <p>
+            <label>Cert</label>
+            <input type="text" id="SOF_GetCertInfo_Cert" value="" />
+        </p>
+        <p>
+            <label>type</label>
+            <input type="text" id="SOF_GetCertInfo_type" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="SOF_GetCertInfo(SOF_GetCertInfo_Cert.value,string2number(SOF_GetCertInfo_type.value),call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_GetCertInfoByOid</label>
+        <p>
+            <label>Cert</label>
+            <input type="text" id="SOF_GetCertInfoByOid_Cert" value="" />
+        </p>
+        <p>
+            <label>Oid</label>
+            <input type="text" id="SOF_GetCertInfoByOid_Oid" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="SOF_GetCertInfoByOid(SOF_GetCertInfoByOid_Cert.value,SOF_GetCertInfoByOid_Oid.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_SignData</label>
+        <p>
+            <label>CertID</label>
+            <input type="text" id="SOF_SignData_CertID" value="" />
+        </p>
+        <p>
+            <label>InData</label>
+            <input type="text" id="SOF_SignData_InData" value="" />
+        </p>
+        <p>
+            <input type="button" onclick="SOF_SignData(SOF_SignData_CertID.value,SOF_SignData_InData.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_VerifySignedData</label>
+        <p>
+            <label>Cert</label>
+            <input type="text" id="SOF_VerifySignedData_Cert" value="" />
+        </p>
+        <p>
+            <label>InData</label>
+            <input type="text" id="SOF_VerifySignedData_InData" value="" />
+        </p>
+        <p>
+            <label>SignValue</label>
+            <input type="text" id="SOF_VerifySignedData_SignValue" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="SOF_VerifySignedData(SOF_VerifySignedData_Cert.value,SOF_VerifySignedData_InData.value,SOF_VerifySignedData_SignValue.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_SignFile</label>
+        <p>
+            <label>CertID</label>
+            <input type="text" id="SOF_SignFile_CertID" value="" />
+        </p>
+        <p>
+            <label>InFile</label>
+            <input type="text" id="SOF_SignFile_InFile" value="" />
+        </p>
+        <p>
+            <input type="button" onclick="SOF_SignFile(SOF_SignFile_CertID.value,SOF_SignFile_InFile.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_VerifySignedFile</label>
+        <p>
+            <label>Cert</label>
+            <input type="text" id="SOF_VerifySignedFile_Cert" value="" />
+        </p>
+        <p>
+            <label>InFile</label>
+            <input type="text" id="SOF_VerifySignedFile_InFile" value="" />
+        </p>
+        <p>
+            <label>SignValue</label>
+            <input type="text" id="SOF_VerifySignedFile_SignValue" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="SOF_VerifySignedFile(SOF_VerifySignedFile_Cert.value,SOF_VerifySignedFile_InFile.value,SOF_VerifySignedFile_SignValue.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_EncryptData</label>
+        <p>
+            <label>Cert</label>
+            <input type="text" id="SOF_EncryptData_Cert" value="" />
+        </p>
+        <p>
+            <label>InData</label>
+            <input type="text" id="SOF_EncryptData_InData" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="SOF_EncryptData(SOF_EncryptData_Cert.value,SOF_EncryptData_InData.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_DecryptData</label>
+        <p>
+            <label>CertID</label>
+            <input type="text" id="SOF_DecryptData_CertID" value="" />
+        </p>
+        <p>
+            <label>InData</label>
+            <input type="text" id="SOF_DecryptData_InData" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="SOF_DecryptData(SOF_DecryptData_CertID.value,SOF_DecryptData_InData.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_SignMessage</label>
+        <p>
+            <label>dwFlag</label>
+            <input type="text" id="SOF_SignMessage_dwFlag" value="" />
+        </p>
+        <p>
+            <label>CertID</label>
+            <input type="text" id="SOF_SignMessage_CertID" value="" />
+        </p>
+        <p>
+            <label>InData</label>
+            <input type="text" id="SOF_SignMessage_InData" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="SOF_SignMessage(string2number(SOF_SignMessage_dwFlag.value),SOF_SignMessage_CertID.value,SOF_SignMessage_InData.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_VerifySignedMessage</label>
+        <p>
+            <label>MessageData</label>
+            <input type="text" id="SOF_VerifySignedMessage_MessageData" value="" />
+        </p>
+        <p>
+            <label>InData</label>
+            <input type="text" id="SOF_VerifySignedMessage_InData" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="SOF_VerifySignedMessage(SOF_VerifySignedMessage_MessageData.value,SOF_VerifySignedMessage_InData.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_GetInfoFromSignedMessage</label>
+        <p>
+            <label>SignedMessage</label>
+            <input type="text" id="SOF_GetInfoFromSignedMessage_SignedMessage" value="" />
+        </p>
+        <p>
+            <label>type</label>
+            <input type="text" id="SOF_GetInfoFromSignedMessage_type" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="SOF_GetInfoFromSignedMessage(SOF_GetInfoFromSignedMessage_SignedMessage.value,string2number(SOF_GetInfoFromSignedMessage_type.value),call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_SignDataXML</label>
+        <p>
+            <label>CertID</label>
+            <input type="text" id="SOF_SignDataXML_CertID" value="" />
+        </p>
+        <p>
+            <label>InData</label>
+            <input type="text" id="SOF_SignDataXML_InData" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="SOF_SignDataXML(SOF_SignDataXML_CertID.value,SOF_SignDataXML_InData.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_VerifySignedDataXML</label>
+        <p>
+            <label>InData</label>
+            <input type="text" id="SOF_VerifySignedDataXML_InData" value="" />
+        </p>
+
+        <p>
+            <input type="button" onclick="SOF_VerifySignedDataXML(SOF_VerifySignedDataXML_InData.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_GetXMLSignatureInfo</label>
+        <p>
+            <label>XMLSignedData</label>
+            <input type="text" id="SOF_GetXMLSignatureInfo_XMLSignedData" value="" />
+        </p>
+        <p>
+            <label>type</label>
+            <input type="text" id="SOF_GetXMLSignatureInfo_type" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="SOF_GetXMLSignatureInfo(SOF_GetXMLSignatureInfo_XMLSignedData.value,string2number(SOF_GetXMLSignatureInfo_type.value),call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_GenRandom</label>
+        <p>
+            <label>RandomLen</label>
+            <input type="text" id="SOF_GenRandom_RandomLen" value="" />
+        </p>
+
+        <p>
+            <input type="button" onclick="SOF_GenRandom(string2number(SOF_GenRandom_RandomLen.value),call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_PubKeyEncrypt</label>
+        <p>
+            <label>Cert</label>
+            <input type="text" id="SOF_PubKeyEncrypt_Cert" value="" />
+        </p>
+        <p>
+            <label>InData</label>
+            <input type="text" id="SOF_PubKeyEncrypt_InData" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="SOF_PubKeyEncrypt(SOF_PubKeyEncrypt_Cert.value,SOF_PubKeyEncrypt_InData.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_PriKeyDecrypt</label>
+        <p>
+            <label>CertID</label>
+            <input type="text" id="SOF_PriKeyDecrypt_CertID" value="" />
+        </p>
+        <p>
+            <label>InData</label>
+            <input type="text" id="SOF_PriKeyDecrypt_InData" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="SOF_PriKeyDecrypt(SOF_PriKeyDecrypt_CertID.value,SOF_PriKeyDecrypt_InData.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_SecertSegment</label>
+        <p>
+            <label>Secert</label>
+            <input type="text" id="SOF_SecertSegment_Secert" value="" />
+        </p>
+        <p>
+            <label>m</label>
+            <input type="text" id="SOF_SecertSegment_m" value="" />
+        </p>
+        <p>
+            <label>n</label>
+            <input type="text" id="SOF_SecertSegment_n" value="" />
+        </p>
+        <p>
+            <label>k</label>
+            <input type="text" id="SOF_SecertSegment_k" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="SOF_SecertSegment(SOF_SecertSegment_Secert.value,string2number(SOF_SecertSegment_m.value),string2number(SOF_SecertSegment_n.value),string2number(SOF_SecertSegment_k.value),call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_SecertRecovery</label>
+        <p>
+            <label>Seg</label>
+            <input type="text" id="SOF_SecertRecovery_Seg" value="" />
+        </p>
+
+        <p>
+            <input type="button" onclick="SOF_SecertRecovery(SOF_SecertRecovery_Seg.value,call_back)" value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_GetLastError</label>
+        <p>
+            <input type="button" onclick="SOF_GetLastError(call_back)" value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>GetDeviceCount</label>
+        <p>
+            <input type="button" onclick="GetDeviceCount(call_back)" value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>GetAllDeviceSN</label>
+        <p>
+            <input type="button" onclick="GetAllDeviceSN(call_back)" value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>GetDeviceSNByIndex</label>
+        <p>
+            <label>iIndex</label>
+            <input type="text" id="GetDeviceSNByIndex_iIndex" value="" />
+        </p>
+
+        <p>
+            <input type="button" onclick="GetDeviceSNByIndex(string2number(GetDeviceSNByIndex_iIndex.value),call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>GetDeviceInfo</label>
+        <p>
+            <label>sDeviceSN</label>
+            <input type="text" id="GetDeviceInfo_sDeviceSN" value="" />
+        </p>
+        <p>
+            <label>iType</label>
+            <input type="text" id="GetDeviceInfo_iType" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="GetDeviceInfo(GetDeviceInfo_sDeviceSN.value,string2number(GetDeviceInfo_iType.value),call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>ChangeAdminPass</label>
+        <p>
+            <label>sDeviceSN</label>
+            <input type="text" id="ChangeAdminPass_sDeviceSN" value="" />
+        </p>
+        <p>
+            <label>sOldPass</label>
+            <input type="text" id="ChangeAdminPass_sOldPass" value="" />
+        </p>
+        <p>
+            <label>sNewPass</label>
+            <input type="text" id="ChangeAdminPass_sNewPass" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="ChangeAdminPass(ChangeAdminPass_sDeviceSN.value,ChangeAdminPass_sOldPass.value,ChangeAdminPass_sNewPass.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>UnlockUserPass</label>
+        <p>
+            <label>sDeviceSN</label>
+            <input type="text" id="UnlockUserPass_sDeviceSN" value="" />
+        </p>
+        <p>
+            <label>sAdminPass</label>
+            <input type="text" id="UnlockUserPass_sAdminPass" value="" />
+        </p>
+        <p>
+            <label>sNewUserPass</label>
+            <input type="text" id="UnlockUserPass_sNewUserPass" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="UnlockUserPass(UnlockUserPass_sDeviceSN.value,UnlockUserPass_sAdminPass.value,UnlockUserPass_sNewUserPass.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>GenerateKeyPair</label>
+        <p>
+            <label>sDeviceSN</label>
+            <input type="text" id="GenerateKeyPair_sDeviceSN" value="" />
+        </p>
+        <p>
+            <label>sContainerName</label>
+            <input type="text" id="GenerateKeyPair_sContainerName" value="" />
+        </p>
+        <p>
+            <label>iKeyType</label>
+            <input type="text" id="GenerateKeyPair_iKeyType" value="" />
+        </p>
+        <p>
+            <label>bSign</label>
+            <input type="text" id="GenerateKeyPair_bSign" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="GenerateKeyPair(GenerateKeyPair_sDeviceSN.value,GenerateKeyPair_sContainerName.value,string2number(GenerateKeyPair_iKeyType.value),string2bool(GenerateKeyPair_bSign.value),call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>ExportPubKey</label>
+        <p>
+            <label>sDeviceSN</label>
+            <input type="text" id="ExportPubKey_sDeviceSN" value="" />
+        </p>
+        <p>
+            <label>sContainerName</label>
+            <input type="text" id="ExportPubKey_sContainerName" value="" />
+        </p>
+        <p>
+            <label>bSign</label>
+            <input type="text" id="ExportPubKey_bSign" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="ExportPubKey(ExportPubKey_sDeviceSN.value,ExportPubKey_sContainerName.value,string2bool(ExportPubKey_bSign.value),call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>ImportSignCert</label>
+        <p>
+            <label>sDeviceSN</label>
+            <input type="text" id="ImportSignCert_sDeviceSN" value="" />
+        </p>
+        <p>
+            <label>sContainerName</label>
+            <input type="text" id="ImportSignCert_sContainerName" value="" />
+        </p>
+        <p>
+            <label>sCert</label>
+            <input type="text" id="ImportSignCert_sCert" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="ImportSignCert(ImportSignCert_sDeviceSN.value,ImportSignCert_sContainerName.value,ImportSignCert_sCert.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>ImportEncCert</label>
+        <p>
+            <label>sDeviceSN</label>
+            <input type="text" id="ImportEncCert_sDeviceSN" value="" />
+        </p>
+        <p>
+            <label>sContainerName</label>
+            <input type="text" id="ImportEncCert_sContainerName" value="" />
+        </p>
+        <p>
+            <label>sCert</label>
+            <input type="text" id="ImportEncCert_sCert" value="" />
+        </p>
+        <p>
+            <label>sPriKeyCipher</label>
+            <input type="text" id="ImportEncCert_sPriKeyCipher" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="ImportEncCert(ImportEncCert_sDeviceSN.value,ImportEncCert_sContainerName.value,ImportEncCert_sCert.value,ImportEncCert_sPriKeyCipher.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>ReadFile</label>
+        <p>
+            <label>sDeviceSN</label>
+            <input type="text" id="ReadFile_sDeviceSN" value="" />
+        </p>
+        <p>
+            <label>sFileName</label>
+            <input type="text" id="ReadFile_sFileName" value="" />
+        </p>
+        <p>
+            <input type="button" onclick="ReadFile(ReadFile_sDeviceSN.value,ReadFile_sFileName.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>WriteFile</label>
+        <p>
+            <label>sDeviceSN</label>
+            <input type="text" id="WriteFile_sDeviceSN" value="" />
+        </p>
+        <p>
+            <label>sFileName</label>
+            <input type="text" id="WriteFile_sFileName" value="" />
+        </p>
+        <p>
+            <label>sContent</label>
+            <input type="text" id="WriteFile_sContent" value="" />
+        </p>
+        <p>
+            <label>bPrivate</label>
+            <input type="text" id="WriteFile_bPrivate" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="WriteFile(WriteFile_sDeviceSN.value,WriteFile_sFileName.value,WriteFile_sContent.value,string2bool(WriteFile_bPrivate.value),call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>IsContainerExist</label>
+        <p>
+            <label>sDeviceSN</label>
+            <input type="text" id="IsContainerExist_sDeviceSN" value="" />
+        </p>
+        <p>
+            <label>sContainerName</label>
+            <input type="text" id="IsContainerExist_sContainerName" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="IsContainerExist(IsContainerExist_sDeviceSN.value,IsContainerExist_sContainerName.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>DeleteContainer</label>
+        <p>
+            <label>sDeviceSN</label>
+            <input type="text" id="DeleteContainer_sDeviceSN" value="" />
+        </p>
+        <p>
+            <label>sContainerName</label>
+            <input type="text" id="DeleteContainer_sContainerName" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="DeleteContainer(DeleteContainer_sDeviceSN.value,DeleteContainer_sContainerName.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>ExportPKCS10</label>
+        <p>
+            <label>sDeviceSN</label>
+            <input type="text" id="ExportPKCS10_sDeviceSN" value="" />
+        </p>
+        <p>
+            <label>sContainerName</label>
+            <input type="text" id="ExportPKCS10_sContainerName" value="" />
+        </p>
+        <p>
+            <label>sDN</label>
+            <input type="text" id="ExportPKCS10_sDN" value="" />
+        </p>
+        <p>
+            <label>bSign</label>
+            <input type="text" id="ExportPKCS10_bSign" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="ExportPKCS10(ExportPKCS10_sDeviceSN.value,ExportPKCS10_sContainerName.value,ExportPKCS10_sDN.value,string2bool(ExportPKCS10_bSign.value),call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>InitDevice</label>
+        <p>
+            <label>sDeviceSN</label>
+            <input type="text" id="InitDevice_sDeviceSN" value="" />
+        </p>
+        <p>
+            <label>sAdminPass</label>
+            <input type="text" id="InitDevice_sAdminPass" value="" />
+        </p>
+        <p>
+            <input type="button" onclick="InitDevice(InitDevice_sDeviceSN.value,InitDevice_sAdminPass.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_GetVersion</label>
+        <p>
+            <input type="button" onclick="SOF_GetVersion(call_back)" value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_ExportExChangeUserCert</label>
+        <p>
+            <label>CertID</label>
+            <input type="text" id="SOF_ExportExChangeUserCert_CertID" value="" />
+        </p>
+
+        <p>
+            <input type="button" onclick="SOF_ExportExChangeUserCert(SOF_ExportExChangeUserCert_CertID.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_ValidateCert</label>
+        <p>
+            <label>Cert</label>
+            <input type="text" id="SOF_ValidateCert_Cert" value="" />
+        </p>
+
+        <p>
+            <input type="button" onclick="SOF_ValidateCert(SOF_ValidateCert_Cert.value,call_back)" value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>GetENVSN</label>
+        <p>
+            <label>sDeviceSN</label>
+            <input type="text" id="GetENVSN_sDeviceSN" value="" />
+        </p>
+
+        <p>
+            <input type="button" onclick="GetENVSN(GetENVSN_sDeviceSN.value,call_back)" value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SetENVSN</label>
+        <p>
+            <label>sDeviceSN</label>
+            <input type="text" id="SetENVSN_sDeviceSN" value="" />
+        </p>
+        <p>
+            <label>sEnvsn</label>
+            <input type="text" id="SetENVSN_sEnvsn" value="" />
+        </p>
+        <p>
+            <input type="button" onclick="SetENVSN(SetENVSN_sDeviceSN.value,SetENVSN_sEnvsn.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>IsDeviceExist</label>
+        <p>
+            <label>sDeviceSN</label>
+            <input type="text" id="IsDeviceExist_sDeviceSN" value="" />
+        </p>
+
+        <p>
+            <input type="button" onclick="IsDeviceExist(IsDeviceExist_sDeviceSN.value,call_back)" value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>GetContainerCount</label>
+        <p>
+            <label>sDeviceSN</label>
+            <input type="text" id="GetContainerCount_sDeviceSN" value="" />
+        </p>
+
+        <p>
+            <input type="button" onclick="GetContainerCount(GetContainerCount_sDeviceSN.value,call_back)" value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_SymEncryptData</label>
+        <p>
+            <label>sKey</label>
+            <input type="text" id="SOF_SymEncryptData_sKey" value="" />
+        </p>
+        <p>
+            <label>indata</label>
+            <input type="text" id="SOF_SymEncryptData_indata" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="SOF_SymEncryptData(SOF_SymEncryptData_sKey.value,SOF_SymEncryptData_indata.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_SymDecryptData</label>
+        <p>
+            <label>sKey</label>
+            <input type="text" id="SOF_SymDecryptData_sKey" value="" />
+        </p>
+        <p>
+            <label>indata</label>
+            <input type="text" id="SOF_SymDecryptData_indata" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="SOF_SymDecryptData(SOF_SymDecryptData_sKey.value,SOF_SymDecryptData_indata.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_SymEncryptFile</label>
+        <p>
+            <label>sKey</label>
+            <input type="text" id="SOF_SymEncryptFile_sKey" value="" />
+        </p>
+        <p>
+            <label>inFile</label>
+            <input type="text" id="SOF_SymEncryptFile_inFile" value="" />
+        </p>
+        <p>
+            <label>outFile</label>
+            <input type="text" id="SOF_SymEncryptFile_outFile" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="SOF_SymEncryptFile(SOF_SymEncryptFile_sKey.value,SOF_SymEncryptFile_inFile.value,SOF_SymEncryptFile_outFile.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_SymDecryptFile</label>
+        <p>
+            <label>sKey</label>
+            <input type="text" id="SOF_SymDecryptFile_sKey" value="" />
+        </p>
+        <p>
+            <label>inFile</label>
+            <input type="text" id="SOF_SymDecryptFile_inFile" value="" />
+        </p>
+        <p>
+            <label>outFile</label>
+            <input type="text" id="SOF_SymDecryptFile_outFile" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="SOF_SymDecryptFile(SOF_SymDecryptFile_sKey.value,SOF_SymDecryptFile_inFile.value,SOF_SymDecryptFile_outFile.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_GetLastErrMsg</label>
+        <p>
+            <input type="button" onclick="SOF_GetLastErrMsg(call_back)" value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_Base64Encode</label>
+        <p>
+            <label>sIndata</label>
+            <input type="text" id="SOF_Base64Encode_sIndata" value="" />
+        </p>
+
+        <p>
+            <input type="button" onclick="SOF_Base64Encode(SOF_Base64Encode_sIndata.value,call_back)" value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_Base64Decode</label>
+        <p>
+            <label>sIndata</label>
+            <input type="text" id="SOF_Base64Decode_sIndata" value="" />
+        </p>
+
+        <p>
+            <input type="button" onclick="SOF_Base64Decode(SOF_Base64Decode_sIndata.value,call_back)" value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_HashData</label>
+        <p>
+            <label>hashAlg</label>
+            <input type="text" id="SOF_HashData_hashAlg" value="" />
+        </p>
+        <p>
+            <label>sInData</label>
+            <input type="text" id="SOF_HashData_sInData" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="SOF_HashData(string2number(SOF_HashData_hashAlg.value),SOF_HashData_sInData.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_HashFile</label>
+        <p>
+            <label>hashAlg</label>
+            <input type="text" id="SOF_HashFile_hashAlg" value="" />
+        </p>
+        <p>
+            <label>inFile</label>
+            <input type="text" id="SOF_HashFile_inFile" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="SOF_HashFile(string2number(SOF_HashFile_hashAlg.value),SOF_HashFile_inFile.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>UnlockUserPassEx</label>
+        <p>
+            <label>sDeviceSN</label>
+            <input type="text" id="UnlockUserPassEx_sDeviceSN" value="" />
+        </p>
+        <p>
+            <label>sAdminPin</label>
+            <input type="text" id="UnlockUserPassEx_sAdminPin" value="" />
+        </p>
+        <p>
+            <label>sNewUserPass</label>
+            <input type="text" id="UnlockUserPassEx_sNewUserPass" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="UnlockUserPassEx(UnlockUserPassEx_sDeviceSN.value,UnlockUserPassEx_sAdminPin.value,UnlockUserPassEx_sNewUserPass.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>DeleteOldContainer</label>
+        <p>
+            <label>sDeviceSN</label>
+            <input type="text" id="DeleteOldContainer_sDeviceSN" value="" />
+        </p>
+
+        <p>
+            <input type="button" onclick="DeleteOldContainer(DeleteOldContainer_sDeviceSN.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>WriteFileEx</label>
+        <p>
+            <label>sDeviceSN</label>
+            <input type="text" id="WriteFileEx_sDeviceSN" value="" />
+        </p>
+        <p>
+            <label>sFileName</label>
+            <input type="text" id="WriteFileEx_sFileName" value="" />
+        </p>
+        <p>
+            <label>sContent</label>
+            <input type="text" id="WriteFileEx_sContent" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="WriteFileEx(WriteFileEx_sDeviceSN.value,WriteFileEx_sFileName.value,WriteFileEx_sContent.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>ReadFileEx</label>
+        <p>
+            <label>sDeviceSN</label>
+            <input type="text" id="ReadFileEx_sDeviceSN" value="" />
+        </p>
+        <p>
+            <label>sFileName</label>
+            <input type="text" id="ReadFileEx_sFileName" value="" />
+        </p>
+        <p>
+            <input type="button" onclick="ReadFileEx(ReadFileEx_sDeviceSN.value,ReadFileEx_sFileName.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_EncryptDataEx</label>
+        <p>
+            <label>Cert</label>
+            <input type="text" id="SOF_EncryptDataEx_Cert" value="" />
+        </p>
+        <p>
+            <label>InData</label>
+            <input type="text" id="SOF_EncryptDataEx_InData" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="SOF_EncryptDataEx(SOF_EncryptDataEx_Cert.value,SOF_EncryptDataEx_InData.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>Base64EncodeFile</label>
+        <p>
+            <label>sInFile</label>
+            <input type="text" id="Base64EncodeFile_sInFile" value="" />
+        </p>
+
+        <p>
+            <input type="button" onclick="Base64EncodeFile(Base64EncodeFile_sInFile.value,call_back)" value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_GetRetryCount</label>
+        <p>
+            <label>CertID</label>
+            <input type="text" id="SOF_GetRetryCount_CertID" value="" />
+        </p>
+
+        <p>
+            <input type="button" onclick="SOF_GetRetryCount(SOF_GetRetryCount_CertID.value,call_back)" value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_GetAllContainerName</label>
+        <p>
+            <label>sDeviceSN</label>
+            <input type="text" id="SOF_GetAllContainerName_sDeviceSN" value="" />
+        </p>
+
+        <p>
+            <input type="button" onclick="SOF_GetAllContainerName(SOF_GetAllContainerName_sDeviceSN.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>CreateSoftDevice</label>
+        <p>
+            <label>sDeviceSN</label>
+            <input type="text" id="CreateSoftDevice_sDeviceSN" value="" />
+        </p>
+        <p>
+            <label>sLabel</label>
+            <input type="text" id="CreateSoftDevice_sLabel" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="CreateSoftDevice(CreateSoftDevice_sDeviceSN.value,CreateSoftDevice_sLabel.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>DeleteSoftDevice</label>
+        <p>
+            <label>sDeviceSN</label>
+            <input type="text" id="DeleteSoftDevice_sDeviceSN" value="" />
+        </p>
+        <p>
+            <label>sPasswd</label>
+            <input type="text" id="DeleteSoftDevice_sPasswd" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="DeleteSoftDevice(DeleteSoftDevice_sDeviceSN.value,DeleteSoftDevice_sPasswd.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>EnableSoftDevice</label>
+        <p>
+            <label>enable</label>
+            <input type="text" id="EnableSoftDevice_enable" value="" />
+        </p>
+        <p>
+            <label>sDeviceSN</label>
+            <input type="text" id="EnableSoftDevice_sDeviceSN" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="EnableSoftDevice(string2bool(EnableSoftDevice_enable.value),EnableSoftDevice_sDeviceSN.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SoftDeviceBackup</label>
+        <p>
+            <label>sDeviceSN</label>
+            <input type="text" id="SoftDeviceBackup_sDeviceSN" value="" />
+        </p>
+        <p>
+            <label>sPasswd</label>
+            <input type="text" id="SoftDeviceBackup_sPasswd" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="SoftDeviceBackup(SoftDeviceBackup_sDeviceSN.value,SoftDeviceBackup_sPasswd.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SoftDeviceRestore</label>
+        <p>
+            <label>sDeviceSN</label>
+            <input type="text" id="SoftDeviceRestore_sDeviceSN" value="" />
+        </p>
+        <p>
+            <label>sPasswd</label>
+            <input type="text" id="SoftDeviceRestore_sPasswd" value="" />
+        </p>
+        <p>
+            <label>sInFilePath</label>
+            <input type="text" id="SoftDeviceRestore_sInFilePath" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="SoftDeviceRestore(SoftDeviceRestore_sDeviceSN.value,SoftDeviceRestore_sPasswd.value,SoftDeviceRestore_sInFilePath.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_Logout</label>
+        <p>
+            <label>CertID</label>
+            <input type="text" id="SOF_Logout_CertID" value="" />
+        </p>
+
+        <p>
+            <input type="button" onclick="SOF_Logout(SOF_Logout_CertID.value,call_back)" value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SetUserConfig</label>
+        <p>
+            <label>type</label>
+            <input type="text" id="SetUserConfig_type" value="" />
+        </p>
+        <p>
+            <label>strConfig</label>
+            <input type="text" id="SetUserConfig_strConfig" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="SetUserConfig(string2number(SetUserConfig_type.value),SetUserConfig_strConfig.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_SignByteData</label>
+        <p>
+            <label>CertID</label>
+            <input type="text" id="SOF_SignByteData_CertID" value="" />
+        </p>
+        <p>
+            <label>byteLen</label>
+            <input type="text" id="SOF_SignByteData_byteLen" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="SOF_SignByteData(SOF_SignByteData_CertID.value,string2number(SOF_SignByteData_byteLen.value),call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_VerifySignedByteData</label>
+        <p>
+            <label>Cert</label>
+            <input type="text" id="SOF_VerifySignedByteData_Cert" value="" />
+        </p>
+        <p>
+            <label>byteLen</label>
+            <input type="text" id="SOF_VerifySignedByteData_byteLen" value="" />
+        </p>
+        <p>
+            <label>SignValue</label>
+            <input type="text" id="SOF_VerifySignedByteData_SignValue" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="SOF_VerifySignedByteData(SOF_VerifySignedByteData_Cert.value,string2number(SOF_VerifySignedByteData_byteLen.value),SOF_VerifySignedByteData_SignValue.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>OTP_GetChallengeCode</label>
+        <p>
+            <label>sCertID</label>
+            <input type="text" id="OTP_GetChallengeCode_sCertID" value="" />
+        </p>
+
+        <p>
+            <input type="button" onclick="OTP_GetChallengeCode(OTP_GetChallengeCode_sCertID.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>ImportEncCertEx</label>
+        <p>
+            <label>sDeviceSN</label>
+            <input type="text" id="ImportEncCertEx_sDeviceSN" value="" />
+        </p>
+        <p>
+            <label>sContainerName</label>
+            <input type="text" id="ImportEncCertEx_sContainerName" value="" />
+        </p>
+        <p>
+            <label>sCert</label>
+            <input type="text" id="ImportEncCertEx_sCert" value="" />
+        </p>
+        <p>
+            <label>sPriKeyCipher</label>
+            <input type="text" id="ImportEncCertEx_sPriKeyCipher" value="" />
+        </p>
+        <p>
+            <label>ulSymAlg</label>
+            <input type="text" id="ImportEncCertEx_ulSymAlg" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="ImportEncCertEx(ImportEncCertEx_sDeviceSN.value,ImportEncCertEx_sContainerName.value,ImportEncCertEx_sCert.value,ImportEncCertEx_sPriKeyCipher.value,string2number(ImportEncCertEx_ulSymAlg.value),call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_GetCertEntity</label>
+        <p>
+            <label>sCert</label>
+            <input type="text" id="SOF_GetCertEntity_sCert" value="" />
+        </p>
+
+        <p>
+            <input type="button" onclick="SOF_GetCertEntity(SOF_GetCertEntity_sCert.value,call_back)" value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_HMAC</label>
+        <p>
+            <label>hashid</label>
+            <input type="text" id="SOF_HMAC_hashid" value="" />
+        </p>
+        <p>
+            <label>key</label>
+            <input type="text" id="SOF_HMAC_key" value="" />
+        </p>
+        <p>
+            <label>indata</label>
+            <input type="text" id="SOF_HMAC_indata" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="SOF_HMAC(string2number(SOF_HMAC_hashid.value),SOF_HMAC_key.value,SOF_HMAC_indata.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_SignDataByPriKey</label>
+        <p>
+            <label>sPriKey</label>
+            <input type="text" id="SOF_SignDataByPriKey_sPriKey" value="" />
+        </p>
+        <p>
+            <label>sCert</label>
+            <input type="text" id="SOF_SignDataByPriKey_sCert" value="" />
+        </p>
+        <p>
+            <label>sInData</label>
+            <input type="text" id="SOF_SignDataByPriKey_sInData" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="SOF_SignDataByPriKey(SOF_SignDataByPriKey_sPriKey.value,SOF_SignDataByPriKey_sCert.value,SOF_SignDataByPriKey_sInData.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>ImportKeyCertToSoftDevice</label>
+        <p>
+            <label>sDeviceSN</label>
+            <input type="text" id="ImportKeyCertToSoftDevice_sDeviceSN" value="" />
+        </p>
+        <p>
+            <label>sContainerName</label>
+            <input type="text" id="ImportKeyCertToSoftDevice_sContainerName" value="" />
+        </p>
+        <p>
+            <label>sPriKey</label>
+            <input type="text" id="ImportKeyCertToSoftDevice_sPriKey" value="" />
+        </p>
+        <p>
+            <label>sCert</label>
+            <input type="text" id="ImportKeyCertToSoftDevice_sCert" value="" />
+        </p>
+        <p>
+            <label>bSign</label>
+            <input type="text" id="ImportKeyCertToSoftDevice_bSign" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="ImportKeyCertToSoftDevice(ImportKeyCertToSoftDevice_sDeviceSN.value,ImportKeyCertToSoftDevice_sContainerName.value,ImportKeyCertToSoftDevice_sPriKey.value,ImportKeyCertToSoftDevice_sCert.value,string2bool(ImportKeyCertToSoftDevice_bSign.value),call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>InitDeviceEx</label>
+        <p>
+            <label>sDeviceSN</label>
+            <input type="text" id="InitDeviceEx_sDeviceSN" value="" />
+        </p>
+        <p>
+            <label>sAdminPass</label>
+            <input type="text" id="InitDeviceEx_sAdminPass" value="" />
+        </p>
+        <p>
+            <label>sUserPin</label>
+            <input type="text" id="InitDeviceEx_sUserPin" value="" />
+        </p>
+        <p>
+            <label>sKeyLabel</label>
+            <input type="text" id="InitDeviceEx_sKeyLabel" value="" />
+        </p>
+        <p>
+            <label>adminPinMaxRetry</label>
+            <input type="text" id="InitDeviceEx_adminPinMaxRetry" value="" />
+        </p>
+        <p>
+            <label>userPinMaxRetry</label>
+            <input type="text" id="InitDeviceEx_userPinMaxRetry" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="InitDeviceEx(InitDeviceEx_sDeviceSN.value,InitDeviceEx_sAdminPass.value,InitDeviceEx_sUserPin.value,InitDeviceEx_sKeyLabel.value,string2number(InitDeviceEx_adminPinMaxRetry.value),string2number(InitDeviceEx_userPinMaxRetry.value),call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SelectFile</label>
+        <p>
+            <input type="button" onclick="SelectFile(call_back)" value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_SignHashData</label>
+        <p>
+            <label>CertID</label>
+            <input type="text" id="SOF_SignHashData_CertID" value="" />
+        </p>
+        <p>
+            <label>b64ashData</label>
+            <input type="text" id="SOF_SignHashData_b64ashData" value="" />
+        </p>
+        <p>
+            <label>hashAlg</label>
+            <input type="text" id="SOF_SignHashData_hashAlg" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="SOF_SignHashData(SOF_SignHashData_CertID.value,SOF_SignHashData_b64ashData.value,string2number(SOF_SignHashData_hashAlg.value),call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_VerifySignedHashData</label>
+        <p>
+            <label>Cert</label>
+            <input type="text" id="SOF_VerifySignedHashData_Cert" value="" />
+        </p>
+        <p>
+            <label>b64ashData</label>
+            <input type="text" id="SOF_VerifySignedHashData_b64ashData" value="" />
+        </p>
+        <p>
+            <label>SignValue</label>
+            <input type="text" id="SOF_VerifySignedHashData_SignValue" value="" />
+        </p>
+        <p>
+            <label>hashAlg</label>
+            <input type="text" id="SOF_VerifySignedHashData_hashAlg" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="SOF_VerifySignedHashData(SOF_VerifySignedHashData_Cert.value,SOF_VerifySignedHashData_b64ashData.value,SOF_VerifySignedHashData_SignValue.value,string2number(SOF_VerifySignedHashData_hashAlg.value),call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>CheckSoftDeviceEnv</label>
+        <p>
+            <input type="button" onclick="CheckSoftDeviceEnv(call_back)" value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_SignBinaryData</label>
+        <p>
+            <label>CertID</label>
+            <input type="text" id="SOF_SignBinaryData_CertID" value="" />
+        </p>
+
+        <p>
+            <input type="button" onclick="SOF_SignBinaryData(SOF_SignBinaryData_CertID.value,call_back)" value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_VerifySignedBinaryData</label>
+        <p>
+            <label>Cert</label>
+            <input type="text" id="SOF_VerifySignedBinaryData_Cert" value="" />
+        </p>
+        <p>
+            <label>SignValue</label>
+            <input type="text" id="SOF_VerifySignedBinaryData_SignValue" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="SOF_VerifySignedBinaryData(SOF_VerifySignedBinaryData_Cert.value,SOF_VerifySignedBinaryData_SignValue.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_EncryptBinaryData</label>
+        <p>
+            <label>Cert</label>
+            <input type="text" id="SOF_EncryptBinaryData_Cert" value="" />
+        </p>
+
+        <p>
+            <input type="button" onclick="SOF_EncryptBinaryData(SOF_EncryptBinaryData_Cert.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_EncryptBinaryDataEx</label>
+        <p>
+            <label>Cert</label>
+            <input type="text" id="SOF_EncryptBinaryDataEx_Cert" value="" />
+        </p>
+
+        <p>
+            <input type="button" onclick="SOF_EncryptBinaryDataEx(SOF_EncryptBinaryDataEx_Cert.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_DecryptBinaryData</label>
+        <p>
+            <label>CertID</label>
+            <input type="text" id="SOF_DecryptBinaryData_CertID" value="" />
+        </p>
+        <p>
+            <label>InData</label>
+            <input type="text" id="SOF_DecryptBinaryData_InData" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="SOF_DecryptBinaryData(SOF_DecryptBinaryData_CertID.value,SOF_DecryptBinaryData_InData.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_SignBinaryMessage</label>
+        <p>
+            <label>dwFlag</label>
+            <input type="text" id="SOF_SignBinaryMessage_dwFlag" value="" />
+        </p>
+        <p>
+            <label>CertID</label>
+            <input type="text" id="SOF_SignBinaryMessage_CertID" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="SOF_SignBinaryMessage(string2number(SOF_SignBinaryMessage_dwFlag.value),SOF_SignBinaryMessage_CertID.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_VerifySignedBinaryMessage</label>
+        <p>
+            <label>MessageData</label>
+            <input type="text" id="SOF_VerifySignedBinaryMessage_MessageData" value="" />
+        </p>
+
+        <p>
+            <input type="button"
+                onclick="SOF_VerifySignedBinaryMessage(SOF_VerifySignedBinaryMessage_MessageData.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_PubKeyBinaryEncrypt</label>
+        <p>
+            <label>Cert</label>
+            <input type="text" id="SOF_PubKeyBinaryEncrypt_Cert" value="" />
+        </p>
+
+        <p>
+            <input type="button" onclick="SOF_PubKeyBinaryEncrypt(SOF_PubKeyBinaryEncrypt_Cert.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_PriKeyBinaryDecrypt</label>
+        <p>
+            <label>CertID</label>
+            <input type="text" id="SOF_PriKeyBinaryDecrypt_CertID" value="" />
+        </p>
+        <p>
+            <label>InData</label>
+            <input type="text" id="SOF_PriKeyBinaryDecrypt_InData" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="SOF_PriKeyBinaryDecrypt(SOF_PriKeyBinaryDecrypt_CertID.value,SOF_PriKeyBinaryDecrypt_InData.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_Base64BinaryEncode</label>
+        <p>
+            <input type="button" onclick="SOF_Base64BinaryEncode(call_back)" value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_Base64BinaryDecode</label>
+        <p>
+            <label>sIndata</label>
+            <input type="text" id="SOF_Base64BinaryDecode_sIndata" value="" />
+        </p>
+
+        <p>
+            <input type="button" onclick="SOF_Base64BinaryDecode(SOF_Base64BinaryDecode_sIndata.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_HashBinaryData</label>
+        <p>
+            <label>hashAlg</label>
+            <input type="text" id="SOF_HashBinaryData_hashAlg" value="" />
+        </p>
+        <p>
+            <label>sCert</label>
+            <input type="text" id="SOF_HashBinaryData_sCert" value="" />
+        </p>
+        <p>
+            <label>sID</label>
+            <input type="text" id="SOF_HashBinaryData_sID" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="SOF_HashBinaryData(string2number(SOF_HashBinaryData_hashAlg.value),SOF_HashBinaryData_sCert.value,SOF_HashBinaryData_sID.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_SignBinaryDataByPriKey</label>
+        <p>
+            <label>sPriKey</label>
+            <input type="text" id="SOF_SignBinaryDataByPriKey_sPriKey" value="" />
+        </p>
+        <p>
+            <label>sCert</label>
+            <input type="text" id="SOF_SignBinaryDataByPriKey_sCert" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="SOF_SignBinaryDataByPriKey(SOF_SignBinaryDataByPriKey_sPriKey.value,SOF_SignBinaryDataByPriKey_sCert.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>ImportPfxToDevice</label>
+        <p>
+            <label>sDeviceSN</label>
+            <input type="text" id="ImportPfxToDevice_sDeviceSN" value="" />
+        </p>
+        <p>
+            <label>sContainerName</label>
+            <input type="text" id="ImportPfxToDevice_sContainerName" value="" />
+        </p>
+        <p>
+            <label>bSign</label>
+            <input type="text" id="ImportPfxToDevice_bSign" value="" />
+        </p>
+        <p>
+            <label>strPfx</label>
+            <input type="text" id="ImportPfxToDevice_strPfx" value="" />
+        </p>
+        <p>
+            <label>strPfxPass</label>
+            <input type="text" id="ImportPfxToDevice_strPfxPass" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="ImportPfxToDevice(ImportPfxToDevice_sDeviceSN.value,ImportPfxToDevice_sContainerName.value,string2bool(ImportPfxToDevice_bSign.value),ImportPfxToDevice_strPfx.value,ImportPfxToDevice_strPfxPass.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_HashDataEx</label>
+        <p>
+            <label>hashAlg</label>
+            <input type="text" id="SOF_HashDataEx_hashAlg" value="" />
+        </p>
+        <p>
+            <label>sInData</label>
+            <input type="text" id="SOF_HashDataEx_sInData" value="" />
+        </p>
+        <p>
+            <label>sCert</label>
+            <input type="text" id="SOF_HashDataEx_sCert" value="" />
+        </p>
+        <p>
+            <label>sID</label>
+            <input type="text" id="SOF_HashDataEx_sID" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="SOF_HashDataEx(string2number(SOF_HashDataEx_hashAlg.value),SOF_HashDataEx_sInData.value,SOF_HashDataEx_sCert.value,SOF_HashDataEx_sID.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_HashFileEx</label>
+        <p>
+            <label>hashAlg</label>
+            <input type="text" id="SOF_HashFileEx_hashAlg" value="" />
+        </p>
+        <p>
+            <label>inFile</label>
+            <input type="text" id="SOF_HashFileEx_inFile" value="" />
+        </p>
+        <p>
+            <label>sCert</label>
+            <input type="text" id="SOF_HashFileEx_sCert" value="" />
+        </p>
+        <p>
+            <label>sID</label>
+            <input type="text" id="SOF_HashFileEx_sID" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="SOF_HashFileEx(string2number(SOF_HashFileEx_hashAlg.value),SOF_HashFileEx_inFile.value,SOF_HashFileEx_sCert.value,SOF_HashFileEx_sID.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>GetDeviceCountEx</label>
+        <p>
+            <label>type</label>
+            <input type="text" id="GetDeviceCountEx_type" value="" />
+        </p>
+
+        <p>
+            <input type="button" onclick="GetDeviceCountEx(string2number(GetDeviceCountEx_type.value),call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>GetAllDeviceSNEx</label>
+        <p>
+            <label>type</label>
+            <input type="text" id="GetAllDeviceSNEx_type" value="" />
+        </p>
+
+        <p>
+            <input type="button" onclick="GetAllDeviceSNEx(string2number(GetAllDeviceSNEx_type.value),call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_UpdateCert</label>
+        <p>
+            <label>CertID</label>
+            <input type="text" id="SOF_UpdateCert_CertID" value="" />
+        </p>
+        <p>
+            <label>type</label>
+            <input type="text" id="SOF_UpdateCert_type" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="SOF_UpdateCert(SOF_UpdateCert_CertID.value,string2number(SOF_UpdateCert_type.value),call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>OpenSpecifiedFolder</label>
+        <p>
+            <label>backupFilePath</label>
+            <input type="text" id="OpenSpecifiedFolder_backupFilePath" value="" />
+        </p>
+
+        <p>
+            <input type="button" onclick="OpenSpecifiedFolder(OpenSpecifiedFolder_backupFilePath.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>OTP_GetChallengeCodeEx</label>
+        <p>
+            <label>sCertID</label>
+            <input type="text" id="OTP_GetChallengeCodeEx_sCertID" value="" />
+        </p>
+        <p>
+            <label>szAccount</label>
+            <input type="text" id="OTP_GetChallengeCodeEx_szAccount" value="" />
+        </p>
+        <p>
+            <label>money</label>
+            <input type="text" id="OTP_GetChallengeCodeEx_money" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="OTP_GetChallengeCodeEx(OTP_GetChallengeCodeEx_sCertID.value,OTP_GetChallengeCodeEx_szAccount.value,string2number(OTP_GetChallengeCodeEx_money.value),call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>Base64DecodeFile</label>
+        <p>
+            <label>sInData</label>
+            <input type="text" id="Base64DecodeFile_sInData" value="" />
+        </p>
+        <p>
+            <label>sFilePath</label>
+            <input type="text" id="Base64DecodeFile_sFilePath" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="Base64DecodeFile(Base64DecodeFile_sInData.value,Base64DecodeFile_sFilePath.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>EnumFilesInDevice</label>
+        <p>
+            <label>sDeviceSN</label>
+            <input type="text" id="EnumFilesInDevice_sDeviceSN" value="" />
+        </p>
+
+        <p>
+            <input type="button" onclick="EnumFilesInDevice(EnumFilesInDevice_sDeviceSN.value,call_back)" value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_IsLogin</label>
+        <p>
+            <label>CertID</label>
+            <input type="text" id="SOF_IsLogin_CertID" value="" />
+        </p>
+
+        <p>
+            <input type="button" onclick="SOF_IsLogin(SOF_IsLogin_CertID.value,call_back)" value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_LoginEx</label>
+        <p>
+            <label>CertID</label>
+            <input type="text" id="SOF_LoginEx_CertID" value="" />
+        </p>
+        <p>
+            <label>PassWd</label>
+            <input type="text" id="SOF_LoginEx_PassWd" value="" />
+        </p>
+        <p>
+            <label>updateFlag</label>
+            <input type="text" id="SOF_LoginEx_updateFlag" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="SOF_LoginEx(SOF_LoginEx_CertID.value,SOF_LoginEx_PassWd.value,string2number(SOF_LoginEx_updateFlag.value),call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>EnumSupportDeviceList</label>
+        <p>
+            <input type="button" onclick="EnumSupportDeviceList(call_back)" value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>ExportPfxFromDevice</label>
+        <p>
+            <label>sDeviceSN</label>
+            <input type="text" id="ExportPfxFromDevice_sDeviceSN" value="" />
+        </p>
+        <p>
+            <label>sContainerName</label>
+            <input type="text" id="ExportPfxFromDevice_sContainerName" value="" />
+        </p>
+        <p>
+            <label>bSign</label>
+            <input type="text" id="ExportPfxFromDevice_bSign" value="" />
+        </p>
+        <p>
+            <label>strPfxPass</label>
+            <input type="text" id="ExportPfxFromDevice_strPfxPass" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="ExportPfxFromDevice(ExportPfxFromDevice_sDeviceSN.value,ExportPfxFromDevice_sContainerName.value,string2bool(ExportPfxFromDevice_bSign.value),ExportPfxFromDevice_strPfxPass.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_SignHashMessage</label>
+        <p>
+            <label>CertID</label>
+            <input type="text" id="SOF_SignHashMessage_CertID" value="" />
+        </p>
+        <p>
+            <label>InHashData</label>
+            <input type="text" id="SOF_SignHashMessage_InHashData" value="" />
+        </p>
+        <p>
+            <label>hashAlg</label>
+            <input type="text" id="SOF_SignHashMessage_hashAlg" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="SOF_SignHashMessage(SOF_SignHashMessage_CertID.value,SOF_SignHashMessage_InHashData.value,string2number(SOF_SignHashMessage_hashAlg.value),call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>ExportPfxToFile</label>
+        <p>
+            <label>sDeviceSN</label>
+            <input type="text" id="ExportPfxToFile_sDeviceSN" value="" />
+        </p>
+        <p>
+            <label>sContainerName</label>
+            <input type="text" id="ExportPfxToFile_sContainerName" value="" />
+        </p>
+        <p>
+            <label>bSign</label>
+            <input type="text" id="ExportPfxToFile_bSign" value="" />
+        </p>
+        <p>
+            <label>strPfxPass</label>
+            <input type="text" id="ExportPfxToFile_strPfxPass" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="ExportPfxToFile(ExportPfxToFile_sDeviceSN.value,ExportPfxToFile_sContainerName.value,string2bool(ExportPfxToFile_bSign.value),ExportPfxToFile_strPfxPass.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>SOF_SignAPK</label>
+        <p>
+            <label>CertID</label>
+            <input type="text" id="SOF_SignAPK_CertID" value="" />
+        </p>
+        <p>
+            <label>strOriSignature</label>
+            <input type="text" id="SOF_SignAPK_strOriSignature" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="SOF_SignAPK(SOF_SignAPK_CertID.value,SOF_SignAPK_strOriSignature.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>YZT_GenerateKeyPair</label>
+        <p>
+            <label>sDeviceSN</label>
+            <input type="text" id="YZT_GenerateKeyPair_sDeviceSN" value="" />
+        </p>
+        <p>
+            <label>sContainerName</label>
+            <input type="text" id="YZT_GenerateKeyPair_sContainerName" value="" />
+        </p>
+        <p>
+            <label>iKeyTypeRSA</label>
+            <input type="text" id="YZT_GenerateKeyPair_iKeyTypeRSA" value="" />
+        </p>
+        <p>
+            <label>iKeyTypeSM2</label>
+            <input type="text" id="YZT_GenerateKeyPair_iKeyTypeSM2" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="YZT_GenerateKeyPair(YZT_GenerateKeyPair_sDeviceSN.value,YZT_GenerateKeyPair_sContainerName.value,string2number(YZT_GenerateKeyPair_iKeyTypeRSA.value),string2number(YZT_GenerateKeyPair_iKeyTypeSM2.value),call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>YZT_ExportPubKey</label>
+        <p>
+            <label>sDeviceSN</label>
+            <input type="text" id="YZT_ExportPubKey_sDeviceSN" value="" />
+        </p>
+        <p>
+            <label>sContainerName</label>
+            <input type="text" id="YZT_ExportPubKey_sContainerName" value="" />
+        </p>
+        <p>
+            <label>bSign</label>
+            <input type="text" id="YZT_ExportPubKey_bSign" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="YZT_ExportPubKey(YZT_ExportPubKey_sDeviceSN.value,YZT_ExportPubKey_sContainerName.value,string2bool(YZT_ExportPubKey_bSign.value),call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>YZT_ImportSignCert</label>
+        <p>
+            <label>sDeviceSN</label>
+            <input type="text" id="YZT_ImportSignCert_sDeviceSN" value="" />
+        </p>
+        <p>
+            <label>sContainerName</label>
+            <input type="text" id="YZT_ImportSignCert_sContainerName" value="" />
+        </p>
+        <p>
+            <label>sRSACert</label>
+            <input type="text" id="YZT_ImportSignCert_sRSACert" value="" />
+        </p>
+        <p>
+            <label>sSM2Cert</label>
+            <input type="text" id="YZT_ImportSignCert_sSM2Cert" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="YZT_ImportSignCert(YZT_ImportSignCert_sDeviceSN.value,YZT_ImportSignCert_sContainerName.value,YZT_ImportSignCert_sRSACert.value,YZT_ImportSignCert_sSM2Cert.value,call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>YZT_ImportEncCert</label>
+        <p>
+            <label>sDeviceSN</label>
+            <input type="text" id="YZT_ImportEncCert_sDeviceSN" value="" />
+        </p>
+        <p>
+            <label>sContainerName</label>
+            <input type="text" id="YZT_ImportEncCert_sContainerName" value="" />
+        </p>
+        <p>
+            <label>sRSACert</label>
+            <input type="text" id="YZT_ImportEncCert_sRSACert" value="" />
+        </p>
+        <p>
+            <label>sRSAPriKeyCipher</label>
+            <input type="text" id="YZT_ImportEncCert_sRSAPriKeyCipher" value="" />
+        </p>
+        <p>
+            <label>ulRSASymAlg</label>
+            <input type="text" id="YZT_ImportEncCert_ulRSASymAlg" value="" />
+        </p>
+        <p>
+            <label>sSM2Cert</label>
+            <input type="text" id="YZT_ImportEncCert_sSM2Cert" value="" />
+        </p>
+        <p>
+            <label>sSM2PriKeyCipher</label>
+            <input type="text" id="YZT_ImportEncCert_sSM2PriKeyCipher" value="" />
+        </p>
+        <p>
+            <label>ulSM2SymAlg</label>
+            <input type="text" id="YZT_ImportEncCert_ulSM2SymAlg" value="" />
+        </p>
+        <p>
+            <input type="button"
+                onclick="YZT_ImportEncCert(YZT_ImportEncCert_sDeviceSN.value,YZT_ImportEncCert_sContainerName.value,YZT_ImportEncCert_sRSACert.value,YZT_ImportEncCert_sRSAPriKeyCipher.value,string2number(YZT_ImportEncCert_ulRSASymAlg.value),YZT_ImportEncCert_sSM2Cert.value,YZT_ImportEncCert_sSM2PriKeyCipher.value,string2number(YZT_ImportEncCert_ulSM2SymAlg.value),call_back)"
+                value="调用" />
+        </p>
+        </p>
+        <p>
+            <label>GetEnvVersion</label>
+        <p>
+            <input type="button" onclick="GetEnvVersion(call_back)" value="调用" />
+        </p>
+        </p>
+        <p>
+        </p>
+    </div>
+</body>
+
+</html>

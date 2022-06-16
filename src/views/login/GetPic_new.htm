@@ -1,0 +1,251 @@
+<HTML>
+<HEAD>
+<TITLE>Test GetPic</TITLE>
+</HEAD>
+
+<BODY>
+<OBJECT  id="obj" classid="clsid:3BC3C868-95B5-47ED-8686-E0E3E94EF366"></OBJECT>
+
+<script language="javascript">
+function testGetKeyPic()
+{
+    var pic = obj.GetPic();
+	if(pic == "" ){
+		alert("没有读取到图片");
+		return;
+	}
+    document.getElementById("keypic").value = pic;
+    //显示图片
+	obj2.ResetView();
+    obj2.ViewBase64PicCon(pic);
+}
+
+function testHash()
+{ 
+    var hash = obj.Hash("测试hash");
+	document.getElementById("hash").value = hash;
+}
+
+function testConvertPicFormat()
+{
+    var pic = obj.GetPic();      
+	if(pic == ""){
+		alert("没有读取到图片");
+		return;
+	}
+    var jpg = obj.ConvertPicFormat(pic, 1);
+    document.getElementById("format").value = jpg;
+}
+
+function testGetPicByContainerName()
+{
+	var keyId = document.getElementById("UserList").value;
+    //alert(keyId);
+	containerId=(keyId.split("/"))[0];
+	//alert(containerId);
+	var pic = obj.GetPic(containerId);//可以指定获取指定key的图片
+	if(pic == ""){
+		alert("没有读取到图片");
+		return;
+	}
+	 document.getElementById("keypicbycontainer").value = pic;
+	 //显示图片
+	 obj1.ResetView();
+     obj1.ViewBase64PicCon(pic);
+}
+
+function ExportFile()
+{
+	var pic = obj.GetPic();      
+	if(pic == ""){
+		alert("没有读取到图片");
+		return;
+	}
+	var strType = document.getElementById("PicFormat").value;
+    var conpic = obj.ConvertPicFormat(pic, strType);
+	var picType;
+	switch(strType)
+	{
+		case("1"):
+			picType = "jpg";
+			break;
+		case("2"):
+			picType = "gif";
+			break;
+		case("3"):
+			picType = "png";
+			break;
+		case("4"):
+			picType = "tiff";
+			break;
+		case("5"):
+			picType = "bmp";
+			break;
+	}
+	var fso;
+	var f;
+	fso = new ActiveXObject("Scripting.FileSystemObject");
+	f = fso.OpenTextFile("ESealPic."+picType,2,true);
+	f.WriteLine(conpic);
+	f.Close(); 
+	alert("文件已保存到桌面");   
+}
+
+function testConvertPicSize() 
+{
+    var pic = obj.GetPic();     
+	if(pic == ""){
+		alert("没有读取到图片");
+		return;
+	}
+
+	var w = document.getElementById("pw").value;
+	var h = document.getElementById("ph").value;
+    var newpic = obj.ConvertPicSize(pic, w, h);//参数只能是像素值
+    //显示图片
+    document.getElementById("convertpic").value = newpic;
+    obj3.ResetView();
+    obj3.ViewBase64PicCon(newpic);
+}
+function testConvertSvg2Png()
+{
+
+    var svgdata = document.getElementById("svgin").value;
+    var pic = obj.ConvertSvg2Png(svgdata);     
+	if(pic == ""){
+		alert("转换失败");
+		return;
+	}
+	var j_t = document.getElementById("t_png")
+	j_t.value = pic;
+
+
+	document.getElementById('img')
+    .setAttribute(
+        'src', 'data:image/png;base64,' + pic
+    );
+}
+
+</script>
+<center>
+	<table border=1 width="100%">		
+		<tr>
+			<td>获取图片</td>
+			<td><input type="text" name="keypic" id="keypic" size="100"/></td>
+			<td><input type="button" value="GetPic()"  onclick="testGetKeyPic()"/></td>
+		</tr>
+		<tr>
+			<td>显示图片</td>			
+			<td><OBJECT id="obj2" classid="clsid:10895738-E7D6-4126-808A-2A78A878A9B8"></OBJECT></td>
+		</tr>
+		<form id="LoginForm" name="LoginForm">
+		<tr>
+			<td>选择证书</td>
+			<td><select id="UserList" name="UserList" style="width:350px;"></select></td>
+		</tr>
+		</form>
+		<tr>
+			<td>根据容器号读取图片</td>
+			<td><input type="text" name="keypicbycontainer" id="keypicbycontainer" size="100"/></td>
+			<td><input type="button" value="GetPicByContainerName()"  onclick="testGetPicByContainerName()"/></td>
+		</tr>
+		<tr>
+			<td>显示图片</td>			
+			<td><OBJECT id="obj1" classid="clsid:10895738-E7D6-4126-808A-2A78A878A9B8"></OBJECT></td>
+		</tr>
+		<tr>
+			<td>Hash运算</td>
+			<td><input type="text" name="hash"  size="100" id="hash"/></td>
+			<td><input type="button" value="Hash()"  onclick="testHash()"/></td>
+		</tr>
+		<tr>
+			<td>转换成图片</td>
+			<td>
+			<input type="text" name="format" id="format" size="100"/>
+			<select name="PicFormat" id="PicFormat"> 
+			<option value="1">jpeg</option>
+			<option value="2">gif</option>
+			<option value="3">png</option>
+			<option value="4">tiff</option>
+			<option value="5">bmp</option>
+			</select>
+			</td>
+			<td><input type="button" value="ConvertPicFormat()"  onclick="testConvertPicFormat()"/>
+			<input type="button" value="ExportFile()"  onclick="ExportFile()"/>
+			</td>
+		</tr>
+		<tr>
+			<td>转换图片大小</td>
+			<td>
+			像素宽度<input type="text" value = "128" name="pw" id="pw" size="5"/>
+			像素高度<input type="text" value = "128" name="ph" id="ph" size="5"/>（高度参数可选，宽度小于0时设置的高度才生效，输入参数是像素值）
+			<input type="text" name="convertpic" id="convertpic" size="100"/>
+			</td>
+			<td><input type="button" value="testConvertPicSize()"  onclick="testConvertPicSize()"/></td>
+		</tr>
+		<tr>
+			<td>显示图片</td>			
+			<td><OBJECT id="obj3" classid="clsid:10895738-E7D6-4126-808A-2A78A878A9B8"></OBJECT></td>
+		</tr>
+		<tr>
+			<td>svg(base64)转png(base64)</td>
+			<td><textarea id="svgin" cols="100%" rows="6"></textarea>
+			<textarea id="t_png" cols="100%" rows="6"></textarea></td>
+			<td><input type="button" value="TestConvertSvg2Png()"  onclick="testConvertSvg2Png()"/></td>
+		</tr>
+		<tr>
+			<td>显示图片</td>			
+			<td><img id="img" src="" /></td>
+		</tr>
+	</table>
+</center>
+</BODY>
+</HTML>
+<OBJECT ID="XTXAPP" CLASSID="CLSID:3F367B74-92D9-4C5E-AB93-234F8A91D5E6" height=1 style="HEIGHT: 1px; LEFT: 10px; TOP: 28px; WIDTH: 1px" width=1 VIEWASTEXT>
+		
+	</OBJECT>
+	<SCRIPT LANGUAGE=JAVASCRIPT event=OnLoad for=window>
+		GetUserList("LoginForm.UserList");
+	</SCRIPT>
+	<SCRIPT LANGUAGE=javascript event=OnUsbKeyChange for=XTXAPP>
+		ChangeUserList("LoginForm.UserList");
+	</SCRIPT>
+	<script>
+	function GetUserList(strListID)
+	{
+		var objListID = eval(strListID);
+		var strUserList = XTXAPP.SOF_GetUserList();
+		//alert(strUserList);
+		while (1) {
+			var i = strUserList.indexOf("&&&");
+			if (i <= 0 ) {
+				break;
+			}
+			var strOneUser = strUserList.substring(0, i);
+			var strName = strOneUser.substring(0, strOneUser.indexOf("||"));
+			var strUniqueID = strOneUser.substring(strOneUser.indexOf("||") + 2, strOneUser.length);
+			var objItem = new Option(strName, strUniqueID);
+			objListID.options.add(objItem);
+			var len = strUserList.length;
+			strUserList = strUserList.substring(i + 3,len);
+		}
+		var objListID = null;
+		return;
+	}
+	//清空证书列表
+	function RemoveUserList(strListID)
+	{
+		var objListID = eval(strListID);
+		var i;
+		var n = objListID.length;
+		for(i = 0; i < n; i++) {
+			objListID.remove(0);
+		}
+	}
+	//重新填充用户列表
+	function ChangeUserList(strListID)
+	{
+		RemoveUserList(strListID);
+		GetUserList(strListID);
+	}
+	</script>
