@@ -11,14 +11,14 @@
       <%= htmlWebpackPlugin.options.title%>
     </title>
     <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
-    <!-- <link
+    <link
       rel="stylesheet"
       href="<%= htmlWebpackPlugin.options.mapUrl %>/LongMap/LongMap.css"
     />
     <link
       rel="stylesheet"
       href="<%= htmlWebpackPlugin.options.mapUrl %>/LongMap/mapFn/mapFn.css"
-    /> -->
+    />
     <script>
       document.addEventListener("DOMContentLoaded", (event) => {
         console.log(event);
@@ -95,10 +95,10 @@
 
 
     <!-- gix.js 和 mapFn引入顺序不能改动，先加载gjx.js 后加载mapFn.js -->
-    <!-- <script src="<%= htmlWebpackPlugin.options.mapUrl %>/LongMap/gjx.js"></script>
-    <script src="<%= htmlWebpackPlugin.options.mapUrl %>/LongMap/mapFn/mapFn.js"></script> -->
+    <script src="<%= htmlWebpackPlugin.options.mapUrl %>/LongMap/gjx.js"></script>
+    <script src="<%= htmlWebpackPlugin.options.mapUrl %>/LongMap/mapFn/mapFn.js"></script>
     <!-- 指北针，地图恢复定位 -->
-    <!-- <script src="<%= htmlWebpackPlugin.options.mapUrl %>/LongMap/ViewShed.min.js"></script> -->
+    <script src="<%= htmlWebpackPlugin.options.mapUrl %>/LongMap/ViewShed.min.js"></script>
 
     <script src="./jsencrypt.min.js"></script>
     <script src="./jsWebControl-1.0.0.min.js"></script>
