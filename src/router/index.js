@@ -75,7 +75,7 @@ export const asyncRouterMap = [{
         component: views,
         name: "交通运行",
         meta: {
-            roles: ['GET/bigScreen/vehicleMonitor', 'GET/bigScreen/busCapacity','GET/bigScreen/WayLeave', 'GET/bigScreen/RoadRunning', 'GET/bigScreen/BusOperation', 'GET/bigScreen/KeyVehicle', 'GET/bigScreen/StaticTraffic', 'GET/bigScreen/TrafficPassengerFlow', 'GET/bigScreen/TrafficManageSupport', 'GET/bigScreen/RoadMulPortrait']
+            roles: ['GET/bigScreen/vehicleMonitor', 'GET/bigScreen/busCapacity', 'GET/bigScreen/RoadRunning', 'GET/bigScreen/BusOperation', 'GET/bigScreen/KeyVehicle', 'GET/bigScreen/StaticTraffic', 'GET/bigScreen/TrafficPassengerFlow', 'GET/bigScreen/TrafficManageSupport', 'GET/bigScreen/RoadMulPortrait']
         },
         children: [{
                 path: '/carVehicle',
@@ -95,15 +95,15 @@ export const asyncRouterMap = [{
                 },
                 component: busCapacity
             },
-            {
-                path: '/WayLeave',
-                name: 'WayLeave',
-                title: '道路运行',
-                meta: {
-                    roles: ['GET/bigScreen/WayLeave']
-                },
-                component: WayLeave
-            },
+            // {
+            //     path: '/WayLeave',
+            //     name: 'WayLeave',
+            //     title: '道路运行',
+            //     meta: {
+            //         roles: ['GET/bigScreen/WayLeave']
+            //     },
+            //     component: WayLeave
+            // },
             {
                 path: '/RoadRunning',
                 name: 'RoadRunning',
