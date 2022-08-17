@@ -4,7 +4,7 @@
       <span>疫情地图</span>
     </DpHeader>
     <div class="iframebox">
-        <iframe class="isframe" src="http://172.21.13.162:8080/dp/index.html#/emergencyCommand" frameborder=0 Border=0 Marginwidth=0 Marginheight=0 width=100% height="100%" scrolling=auto></iframe> 
+        <iframe class="isframe" src="http://172.21.13.162:8080/dp2/index.html#/" frameborder=0 Border=0 Marginwidth=0 Marginheight=0 width=100% height="100%" scrolling=auto></iframe> 
     </div>
   </div>
 </template>
