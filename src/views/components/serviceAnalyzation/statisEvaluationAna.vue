@@ -17,6 +17,7 @@
         :data="list" 
         :option="option"
         :page.sync="page"
+        :table-loading="loading"
         @cell-click="handlecellclick"
         @size-change="sizeChange"
         @current-change="currentChange" 
@@ -73,6 +74,7 @@ export default {
       dialogVisible: false,
       dialogTitle: '',
       show: false,
+      loading: false,
       sblsh:'',
       approvalshow:false,
       list: [],
@@ -133,11 +135,11 @@ export default {
             format: "yyyy-MM-dd hh:mm:ss",
             valueFormat: "yyyy-MM-dd hh:mm:ss",
           },
-          {
-            label: "视频播放",
-            prop: "video",
-            slot: true
-          }
+          // {
+          //   label: "视频播放",
+          //   prop: "video",
+          //   slot: true
+          // }
         ]
       }
     };
@@ -145,7 +147,6 @@ export default {
   mounted() {
     this.subTitleCom = findComponentDownward(this, "subTitle");
     this.getData();
-
   },
   methods: {
     // appclose() {
@@ -187,6 +188,7 @@ export default {
     handleBar(row){
       let { name } = row
       this.dialogVisible = true
+      this.loading =true;
       this.dialogTitle = name
       this.currentTime = name
       this.getList()
@@ -200,6 +202,7 @@ export default {
       }
       const res = await getBusinessList(postData)
       let { total, data } = res.data.data;
+      this.loading =false;
       this.page.total = total;
       this.list = data
       console.log( res.data.data ,'list')

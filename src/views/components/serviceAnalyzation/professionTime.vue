@@ -24,6 +24,7 @@
           :data="list" 
           :option="option"
           :page.sync="page"
+          :table-loading="loading"
           @cell-click="handlecellclick"
           @size-change="sizeChange"
           @current-change="currentChange" 
@@ -88,6 +89,7 @@ export default {
       barColors: ['rgba(187,160,44,.8)', 'rgba(187,224,59,.8)'],
       dialogVisible: false,
       show: false,
+      loading: false,
       dialogTitle: '',
       list:[],
       currentTime: '',
@@ -147,11 +149,12 @@ export default {
             type: "date",
             format: "yyyy-MM-dd hh:mm:ss",
             valueFormat: "yyyy-MM-dd hh:mm:ss",
-          },{
-            label: "视频播放",
-            prop: "video",
-            slot: true
-          }
+          },
+          // {
+          //   label: "视频播放",
+          //   prop: "video",
+          //   slot: true
+          // }
         ]
       }
     };
@@ -198,6 +201,7 @@ export default {
       handleBar(row) {
        console.log(row,'roo')
        this.dialogVisible = true
+       this.loading = true
       let code = this.filterCode(row.name)
        this.getData(code)
       },
@@ -209,8 +213,8 @@ export default {
           queryParam:code
         }
         const res = await getDepartment(postData)
-        console.log(res,'res555')
         let {total, data} = res.data.data
+        this.loading = false
         this.page.total = total
         this.list= data
       },

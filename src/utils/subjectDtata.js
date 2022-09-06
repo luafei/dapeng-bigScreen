@@ -19,19 +19,19 @@ export default {
       // {label:'60岁以上', num:0 },
     ],
     type2:[
-      {label: '博士', num: 44},
-      {label: '硕士', num: 25},
+      {label: '博士', num: 1.8},
+      {label: '硕士', num: 8.9},
       // {label: '研究生', num: 0},
-      {label: '大学本科', num: 42.6},
-      {label: '大专', num: 19.1},
-      {label: '高技', num: 1.5},
-      {label: '中专', num: 1.5},
+      {label: '大学本科', num: 51.4},
+      {label: '大专', num: 23.8},
+      {label: '高技', num: 1.3},
+      {label: '中专', num: 0.5},
       // {label: '中技', num: 0},
       // {label: '职高', num: 0},
       // {label: '高中', num: 0},
       // {label: '初中', num: 0},
       // {label: '小学', num: 0},
-      {label: '未入学', num: 5.9}
+      {label: '未入学', num: 11.9}
     ],
     type3:[
       // {label: '哲学', num: 0},

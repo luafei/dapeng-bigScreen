@@ -95,12 +95,12 @@ export default {
       goods:[],
       bads:[],
       allTime:[],
-      beachName: "部门办结率",
+      beachName: "部门按时办结率",
       options: [
-        {
-          value:'部门超时办结率',
-          label:'部门超时办结率'
-        },
+        // {
+        //   value:'部门超时办结率',
+        //   label:'部门超时办结率'
+        // },
         {
           value:'部门办结率',
           label:'部门办结率'

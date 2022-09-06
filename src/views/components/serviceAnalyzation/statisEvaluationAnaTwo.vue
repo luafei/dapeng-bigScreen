@@ -50,6 +50,7 @@
           :data="list" 
           :option="option"
           :page.sync="page"
+          :table-loading="loading"
           @cell-click="handlecellclick"
           @size-change="sizeChange"
           @current-change="currentChange" 
@@ -117,6 +118,7 @@ export default {
       lables002:[],
       list:[],
       show:false,
+      loading: false,
       currenList:'',
       showIndex:0,
       dialogVisible: false,
@@ -180,11 +182,11 @@ export default {
             format: "yyyy-MM-dd hh:mm:ss",
             valueFormat: "yyyy-MM-dd hh:mm:ss",
           },
-          {
-              label: "视频播放",
-              prop: "video",
-              slot: true
-          }
+          // {
+          //     label: "视频播放",
+          //     prop: "video",
+          //     slot: true
+          // }
         ]
       }
     };
@@ -247,6 +249,7 @@ export default {
     handleBar(row){
       console.log(111)
       this.dialogVisible =true
+      this.loading = true
       this.currenList = row
       this.getLable()
     },
@@ -260,6 +263,7 @@ export default {
       const res = await getPersonal(postData)
       console.log(res,'resss')
       let {total, data} = res.data.data
+      this.loading = false;
       this.page.total = total;
       this.list= data
       console.log(this.list,'list')

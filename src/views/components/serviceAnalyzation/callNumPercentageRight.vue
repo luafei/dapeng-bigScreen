@@ -37,6 +37,7 @@
                 :data="list" 
                 :option="option"
                 :page.sync="page"
+                :table-loading="loading"
                 @cell-click="handlecellclick"
                 @size-change="sizeChange"
                 @current-change="currentChange" 
@@ -140,6 +141,7 @@ export default {
       values: [],
       showone:false,
       show:false,
+      loading: false,
       barColors: ['#41FFEA', '#40DCFB','#47B5FF'],
       showIndex: 0,
       labels01:[],
@@ -216,11 +218,11 @@ export default {
             format: "yyyy-MM-dd hh:mm:ss",
             valueFormat: "yyyy-MM-dd hh:mm:ss",
           },
-          {
-            label: "视频播放",
-            prop: "video",
-            slot: true
-          }
+          // {
+          //   label: "视频播放",
+          //   prop: "video",
+          //   slot: true
+          // }
         ]
       },
       optionone: {
@@ -376,6 +378,7 @@ export default {
       },
     handleBar(row) {
       this.dialogVisible = true
+      this.loading = true;
       let code = this.filterCode(row.name)
       this.getLable(code)
     },
@@ -388,6 +391,7 @@ export default {
       }
       const res = await getSourceList(postData)
       let {total, data} = res.data.data
+      this.loading = false
       this.page.total = total
       this.list = data
     },

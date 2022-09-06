@@ -40,6 +40,7 @@
               :data="list"
               :option="option"
               :page.sync="page"
+              :table-loading="loading"
               @cell-click="handlecellclick"
               @size-change="sizeChange"
               @current-change="currentChange"
@@ -103,6 +104,7 @@ export default {
             itemList: [],
             list: [],
             show:false,
+            loading:false,
             numList: [],
             dialogVisible:false,
             dialogTitle:'事项业务',
@@ -164,11 +166,11 @@ export default {
                         format:"yyyy-MM-dd hh:mm:ss",
                         valueFormat:"yyyy-MM-dd hh:mm:ss"
                     },
-                    {
-                        label: "视频播放",
-                        prop: "video",
-                        slot: true
-                    }
+                    // {
+                    //     label: "视频播放",
+                    //     prop: "video",
+                    //     slot: true
+                    // }
                 ]
             }
         };
@@ -202,6 +204,7 @@ export default {
         handleBar(i) {
          this.dialogVisible = true
         //  this.dialogTitle = true
+        this.loading = true
          this.currenList = this.listname[i]
          console.log(this.currenList,'curren')
          console.log(i,'iiii')
@@ -216,6 +219,7 @@ export default {
           }
           const res = await getItemnumber(postData)
           let {total, data} = res.data.data
+          this.loading = false;
           this.page.total = total;
           this.list = data
           console.log(res,'list88')
