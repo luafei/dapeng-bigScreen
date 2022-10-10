@@ -4,7 +4,7 @@
       <span>三维地图</span>
     </DpHeader>
     <div class="iframebox">
-        <iframe class="isframe" src="http://172.21.112.157/app03/dapeng/pages/" frameborder=0 Border=0 Marginwidth=0 Marginheight=0 width=100% height="100%" scrolling=auto></iframe> 
+        <iframe class="isframe" src="http://172.21.112.157/app03/dapeng3/pages/" frameborder=0 Border=0 Marginwidth=0 Marginheight=0 width=100% height="100%" scrolling=auto></iframe> 
     </div>
   </div>
 </template>

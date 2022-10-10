@@ -99,6 +99,7 @@ export default {
     };
   },
   mounted() {
+    console.log('mounted');
     let wuBarArr = findComponentsDownward(this, "wu-bar");
     let wuPie = findComponentsDownward(this, "wu-pie");
     this.compArr = wuBarArr.concat(wuPie);
