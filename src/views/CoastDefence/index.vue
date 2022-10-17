@@ -1,5 +1,5 @@
 <template>
-  <div class="wisdomService" id="wisdomService">
+  <div class="coastDefence">
     <DpHeader :active-on="2">
       <span>海防打私</span>
     </DpHeader>
@@ -16,7 +16,7 @@ export default {
   name: "service",
   data() {
     return {
-        name: 'wisdomSutraService'
+        name: 'coastDefence'
     };
   },
   components: {
@@ -32,14 +32,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.wisdomService,
-#wisdomService {
+.coastDefence {
   position: absolute;
   height: 100%;
   width: 100%;
 }
 @media screen and (max-width:1400px){
-  .wisdomService{
+  .coastDefence{
     height: 100%;
   }
 }
