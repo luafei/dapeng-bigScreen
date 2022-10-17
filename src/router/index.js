@@ -8,6 +8,7 @@ const WayLeave = () =>
     import ( /* webpackChunkNmae: "WayLeave"*/ '@/views/WayLeave')
 const DemonstrationSection = () =>
     import ( /* webpackChunkNmae: "WayLeave"*/ '@/views/DemonstrationSection') // 示范路段
+const CoastDefence = () => import('@/views/CoastDefence')    // 海防打私
 const RoadRunning = () => import('@/views/WayLeave/roadRunning.vue')    
 const BusOperation = () => import('@/views/WayLeave/busOperation.vue')
 const KeyVehicle = () => import('@/views/WayLeave/keyVehicle.vue')
@@ -209,7 +210,7 @@ export const asyncRouterMap = [{
         component: views,
         name: '公共安全',
         meta: {
-            roles: ['GET/bigScreen/warningDetails', 'GET/bigScreen/dangerGoods', 'GET/bigScreen/mudTruck', 'GET/bigScreen/demonstrationSection'],
+            roles: ['GET/bigScreen/warningDetails', 'GET/bigScreen/dangerGoods', 'GET/bigScreen/mudTruck', 'GET/bigScreen/demonstrationSection', 'GET/bigScreen/coastDefence'],
         },
         children: [{
                 path: '/warningDetails',
@@ -244,6 +245,15 @@ export const asyncRouterMap = [{
                 component :DemonstrationSection,
                 meta: {
                     roles: ['GET/bigScreen/demonstrationSection'],
+                },
+            },
+            {
+                path: '/CoastDefence', // 海防打私
+                title: '海防打私',
+                name: 'CoastDefence',
+                component :CoastDefence,
+                meta: {
+                    roles: ['GET/bigScreen/coastDefence'],
                 },
             }
         ]
