@@ -1,10 +1,10 @@
 <template>
-  <div class="threeDMap" id="threeDMap">
-    <DpHeader :active-on="8">
-      <span>三维地图</span>
+  <div class="blockData" id="blockDatablockData">
+    <DpHeader :active-on="5">
+      <span>块数据底板</span>
     </DpHeader>
     <div class="iframebox">
-        <iframe class="isframe" src="http://172.21.112.157/app03/dapeng3/pages/" frameborder=0 Border=0 Marginwidth=0 Marginheight=0 width=100% height="100%" scrolling=auto></iframe> 
+        <iframe class="isframe" src="http://172.21.108.28:8080/unifiedAddress" frameborder=0 Border=0 Marginwidth=0 Marginheight=0 width=100% height="100%" scrolling=auto></iframe> 
     </div>
   </div>
 </template>
@@ -16,6 +16,7 @@ export default {
   name: "service",
   data() {
     return {
+        name: 'blockData'
     };
   },
   components: {
@@ -31,14 +32,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.threeDMap,
-#threeDMap {
+.blockData,
+#blockData {
   position: absolute;
   height: 100%;
   width: 100%;
 }
 @media screen and (max-width:1400px){
-  .threeDMap{
+  .blockData{
     height: 100%;
   }
 }

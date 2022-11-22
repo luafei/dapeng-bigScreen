@@ -41,6 +41,7 @@ const scenicSpotDetail = () =>
 
 const warningDetails = () =>
     import ( /*webpackChunkNmae:"warningDetails"*/ '@/views/warningDetails')
+const blockData = () => import('@/views/blockData')    
 const serviceAnalyzation = () =>
     import ( /*webpackChunkNmae:"govSerivce"*/ '@/views/govService/serviceAnalyzation')
 const businessanalysis = () =>
@@ -287,6 +288,25 @@ export const asyncRouterMap = [{
         ]
     },
     {
+        path: '/socialGovernance',
+        component: views,
+        name: '社会治理',
+        meta: {
+            roles: ['GET/bigScreen/socialGovernance/blockData'],
+        },
+        children: [
+            {
+                path: '/blockData',
+                name: 'blockData',
+                title: '块数据底板',
+                component: blockData,
+                meta: {
+                    roles: ['GET/bigScreen/socialGovernance/blockData']
+                }
+            }
+        ]
+    },
+    {
         path: '/govService',
         component: views,
         name: '政务服务',
@@ -302,7 +322,7 @@ export const asyncRouterMap = [{
 
                 meta: {
                     roles: ['GET/bigScreen/govService/serviceAnalyzation']
-                },
+                }
             },
             {
                 path: '/businessanalysis',

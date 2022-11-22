@@ -107,16 +107,21 @@ export default {
         },
         {
           id: 5,
+          text: "社会治理",
+          children: []
+        },
+        {
+          id: 6,
           text: "生态环境",
           children:[]
         },
         {
-          id: 6,
+          id: 7,
           text: "智慧经服",
           children:[]
         },
         {
-          id: 7,
+          id: 8,
           text: "数字孪生",
           children:[]
         }
@@ -146,6 +151,7 @@ export default {
     }
   },
   created() {
+    console.log('dp created');
     this.polling();
   },
 
@@ -160,7 +166,7 @@ export default {
       $(".dpHeader .titleUl").css("left", "-" + offset + "px")
     },
     moveRight() {
-      if (this.leftIndex >= 3) {
+      if (this.leftIndex >= 4) {
         return;
       }
       this.leftIndex++;

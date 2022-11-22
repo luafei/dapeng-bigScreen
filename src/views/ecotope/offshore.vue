@@ -1,7 +1,7 @@
 <template>
   <div class="danger" id="MudTruck">
     <!-- @click.native="goto" -->
-    <DpHeader :active-on="5">
+    <DpHeader :active-on="6">
       <span >近海海域</span>
     </DpHeader>
     <div class="iframebox">

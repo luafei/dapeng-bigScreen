@@ -1,6 +1,6 @@
 <template>
   <div class="wisdomService" id="wisdomService">
-    <DpHeader :active-on="6">
+    <DpHeader :active-on="7">
       <span>智慧经服</span>
     </DpHeader>
     <div class="iframebox">

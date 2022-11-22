@@ -1,6 +1,6 @@
 <template>
   <div class="danger" id="MudTruck">
-    <DpHeader :active-on="5">
+    <DpHeader :active-on="6">
       <span>生态</span>
     </DpHeader>
     <div class="iframebox">
