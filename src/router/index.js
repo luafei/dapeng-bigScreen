@@ -65,7 +65,8 @@ const Noiseandsoilsac = () =>
 const environment = () =>
         import ( /*webpackChunkNmae:"ecotope"*/ '@/views/ecotope/environment')
 // 智慧经服
-const wisdomSutraService = () => import('@/views/wisdomSutraService')    
+const wisdomSutraService = () => import('@/views/wisdomSutraService')
+const wisdomStatistics = () => import('@/views/wisdomSutraService/statistics.vue')
 // 疫情防控
 const digitalSignage = () => import('@/views/epidemicPreventionControl/digitalSignage')
 const epidemicMap = () => import('@/views/epidemicPreventionControl/epidemicMap')
@@ -449,9 +450,9 @@ export const asyncRouterMap = [{
     {
         path: '/wisdomSutraService',
         component: views,
-        name: '智慧经服',
+        name: '经济运行',
         meta: {
-            roles: ['GET/bigScreen/wisdomSutraService']
+            roles: ['GET/bigScreen/wisdomSutraService', 'GET/bigScreen/wisdomStatistics']
         },
         children: [
             {
@@ -462,6 +463,15 @@ export const asyncRouterMap = [{
                     roles: ['GET/bigScreen/wisdomSutraService']
                 },
                 component: wisdomSutraService
+            },
+            {
+                path: '/wisdomStatistics',
+                name: 'wisdomStatistics',
+                title: '智慧统计',
+                meta: {
+                    roles: ['GET/bigScreen/wisdomStatistics']
+                },
+                component: wisdomStatistics
             }
         ]
     },

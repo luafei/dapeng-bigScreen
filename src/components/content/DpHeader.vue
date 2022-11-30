@@ -117,7 +117,7 @@ export default {
         },
         {
           id: 7,
-          text: "智慧经服",
+          text: "经济运行",
           children:[]
         },
         {

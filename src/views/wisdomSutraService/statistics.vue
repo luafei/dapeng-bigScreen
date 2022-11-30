@@ -1,10 +1,10 @@
 <template>
-  <div class="digitalSignage" id="digitalSignage">
-    <DpHeader :active-on="4">
-      <span>数字看板</span>
+  <div class="wisdomStatistics" id="wisdomStatistics">
+    <DpHeader :active-on="7">
+      <span>智慧统计</span>
     </DpHeader>
     <div class="iframebox">
-        <iframe class="isframe" src="http://172.21.13.21/dpyqscreen/#/automaticLogin" frameborder=0 Border=0 Marginwidth=0 Marginheight=0 width=100% height="100%" scrolling=auto></iframe> 
+        <iframe class="isframe" src="http://172.21.112.89:6999/jsp/pj-dyjkqtjwb/leader/screen/bigScreen.jsp" frameborder=0 Border=0 Marginwidth=0 Marginheight=0 width=100% height="100%" scrolling=auto></iframe> 
     </div>
   </div>
 </template>
@@ -16,7 +16,7 @@ export default {
   name: "service",
   data() {
     return {
-        name: 'wisdomSutraService'
+        name: 'wisdomStatistics'
     };
   },
   components: {
@@ -32,14 +32,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.digitalSignage,
-#digitalSignage {
+.wisdomStatistics,
+#wisdomStatistics {
   position: absolute;
   height: 100%;
   width: 100%;
 }
 @media screen and (max-width:1400px){
-  .digitalSignage{
+  .wisdomStatistics{
     height: 100%;
   }
 }
