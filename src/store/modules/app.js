@@ -1,4 +1,5 @@
 import { getSiteName, getVehicleTypeList, getMapVideoPoint, getBeachList, getParkingList,getHotMapBeachList } from '@/api/dicData'
+import { getBeachRolesName } from "@/utils/util";
 
 const app = {
     state: {
@@ -93,7 +94,8 @@ const app = {
         GetBeachList({ commit }) {
             return new Promise(async(resolve, reject) => {
                 try {
-                    const res = await getHotMapBeachList()
+                    var data = getBeachRolesName();
+                    const res = await getHotMapBeachList(data)
                     const beachList = []
                     res.data.data.forEach(item => {
                         beachList.push({

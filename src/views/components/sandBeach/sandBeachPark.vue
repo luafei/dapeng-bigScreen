@@ -54,7 +54,7 @@ import SubTitle from '@/components/common/SubTitle'
 import TimeRoad from '@/components/common/TimeRoad'
 import WuPieOrigin from '@/components/echarts/WuPieOrigin'
 // import busLinearGradient from "@/components/echarts/LinearGradient";
-import { findComponentDownward, getCurrentTime, parseTime} from '@/utils/util'
+import { findComponentDownward, getCurrentTime, parseTime, getBeachRolesName} from '@/utils/util'
 import { getParkFlowDistribution, getParkVehicleSourceRanking, getBeachAlarm } from '@/api/beach'
 
 export default {
@@ -152,13 +152,16 @@ export default {
       this.getParkVehicleSourceRanking()
     },
     async getBeachAlarm(){
-      const res = await getBeachAlarm();
+      var data = getBeachRolesName();
+      const res = await getBeachAlarm(data);
       this.alarmList = res.data.data
     },
     async getParkVehicleSourceRanking(){
+      var val = getBeachRolesName();
       let postData = {
         park: this.parkName,
-        direction: this.btnIndexSel
+        direction: this.btnIndexSel,
+        name: val.name
       }
       const res = await getParkVehicleSourceRanking(postData);
       if(res.data.data){

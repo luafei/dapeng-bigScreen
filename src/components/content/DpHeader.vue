@@ -151,7 +151,6 @@ export default {
     }
   },
   created() {
-    console.log('dp created');
     this.polling();
   },
 

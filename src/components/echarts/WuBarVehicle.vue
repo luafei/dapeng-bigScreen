@@ -36,7 +36,6 @@ export default {
     watch: {
         values: {
             handler: function (vals){
-                console.log('wubarvehicle handler')
                 if(vals.length !== 0){
                     this.maxArr = []
                     let max = Math.max(...vals)

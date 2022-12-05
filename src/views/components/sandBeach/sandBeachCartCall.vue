@@ -1,18 +1,18 @@
 <template>
   <div class="entrance">
-    <sub-title title="沙滩预警排名" subTitle="沙滩停车场今日累计流量" @onToggle="handleToggle" :is-show-right="showIndex === 1" @onComeInOut="onComeInOut"></sub-title>
+    <sub-title title="沙滩预警排名" :subTitle="subTitle" @onToggle="handleToggle" :is-show-right="showIndex === 1" @onComeInOut="onComeInOut"></sub-title>
      <Wu-Number-bus
         :labels="labels02"
         v-show="showIndex === 0"
         :values="values02"
         @onClick="clickWuBar"
       ></Wu-Number-bus>
-    <Wu-bar-r-three v-show="showIndex === 1" :labels="labels" :values="values"></Wu-bar-r-three>
+    <Wu-bar-r-three v-show="showIndex === 1 && showPark" :labels="labels" :values="values"></Wu-bar-r-three>
   </div>
 </template>
 <script>
 import SubTitle from "@/components/common/SubTitle";
-import { findComponentDownward, } from "@/utils/util";
+import { findComponentDownward, getBeachRolesName} from "@/utils/util";
 import WuBarRThree from "@/components/echarts/WuBarRThree";
 import WuNumberBus from "@/components/echarts/WuNumberBus";
 import { getTodayParkFlow, getBeachAlarmRanking } from '@/api/beach'
@@ -44,19 +44,27 @@ export default {
       direction: '0',
       showIndex: 0,
       labels02: [],
-      values02: []
+      values02: [],
+      subTitle: '沙滩停车场今日累计流量',
+      showPark: true,
     };
   },
   mounted() {
     this.values = [180,140,120,190,100]
     this.labels=['西涌停车场','东涌停车场','较场尾停车场','杨梅坑停车场']
     this.subTitleCom = findComponentDownward(this, "subTitle");
+    var data = getBeachRolesName();
+    if (!data.name == '') {
+      this.subTitle = '';
+      this.showPark = false;
+    }
     this.getAlarmRanking()
     this.getData()
   },
   methods: {
     async getAlarmRanking(){
-      const res = await getBeachAlarmRanking()
+      var val = getBeachRolesName();
+      const res = await getBeachAlarmRanking(val)
       this.labels02 = []
       this.values02 = []
       res.data.data.forEach(item => {

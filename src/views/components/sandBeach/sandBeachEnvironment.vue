@@ -1,10 +1,10 @@
 <template>
   <div class="entrance">
-    <sub-title title="沙滩实时环境" subTitle="停车场流量" @onToggle="handleToggle">
+    <sub-title title="沙滩实时环境" :subTitle="subTitle" @onToggle="handleToggle">
     </sub-title>
     <sandBeachtubiao v-show="showIndex === 0" :lables02="lables02" :values02="values02" :sourceOp="sourceOp"></sandBeachtubiao>
 
-    <time-road class="time-road" v-show="showIndex === 1" :is--right="false" :time-type="timeType"  @onSelectTime="onSelectTime">
+    <time-road class="time-road" v-show="showIndex === 1 && showPark" :is--right="false" :time-type="timeType"  @onSelectTime="onSelectTime">
         <el-date-picker
           slot="tips"
           v-show="timeType === 'hour'"
@@ -44,13 +44,13 @@
           end-placeholder="结束月份">
         </el-date-picker>
       </time-road> 
-      <busLinearGradient style="margin-top:40px;" v-show="showIndex === 1" :labels="labels" :values="values" @onClick="handleWuLine" :option="parkList"></busLinearGradient>
+      <busLinearGradient style="margin-top:40px;" v-show="showIndex === 1 && showPark" :labels="labels" :values="values" @onClick="handleWuLine" :option="parkList"></busLinearGradient>
   </div>
 </template>
 
 <script>
 import SubTitle from "@/components/common/SubTitle";
-import { findComponentDownward, } from "@/utils/util";
+import { findComponentDownward, getBeachRolesName} from "@/utils/util";
 import TimeRoad from '@/components/common/TimeRoad'
 import sandBeachtubiao from "@/views/components/sandBeach/sandBeachtubiao";
 import { getBeachCurrentEnvironment, getParkFlowDistribution } from '@/api/beach'
@@ -76,7 +76,7 @@ export default {
     parkList: {
       type: Array,
       default: () => []
-    },
+    }
   },
   data() {
     return {
@@ -101,9 +101,17 @@ export default {
       timeDay: [],
       timeMonth: [],
       parkName: "",
+      showPark: true,
+      subTitle: '停车场流量'
     };
   },
   mounted() {
+    console.log('sandBeachEnvironment', this.showPark)
+    var data = getBeachRolesName();
+    if (!data.name == '') {
+      this.subTitle = '';
+      this.showPark = false;
+    }
     this.subTitleCom = findComponentDownward(this, "subTitle");
     this.getData()
   },
@@ -118,6 +126,9 @@ export default {
   methods: {
     handleToggle({ index }){
       this.showIndex = index
+      if (!this.showPark) {
+        return;
+      }
       if(index === 0){
         this.getData()
       }else{
@@ -173,8 +184,9 @@ export default {
     },
 
     async getData(){
+      var val = getBeachRolesName();
       let colors = ['#14FEF7', '#5397FF', '#FBBA10']
-      const res = await getBeachCurrentEnvironment()
+      const res = await getBeachCurrentEnvironment(val);
       let data = res.data.data
       if(data){
         let labels = []

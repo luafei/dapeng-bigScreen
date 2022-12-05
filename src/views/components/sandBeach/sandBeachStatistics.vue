@@ -26,10 +26,11 @@
 
 <script>
 import SubTitle from "@/components/common/SubTitle";
-import { findComponentDownward } from "@/utils/util";
+import { findComponentDownward, getBeachRolesName } from "@/utils/util";
 import sandbeachPie from "@/components/echarts/sandbeachPie"
 import pagination from "@/mixins/pagination";
 import { getBeachStatistics,getBeachdialog } from '@/api/beach'
+
 export default {
   name: "sandBeachStatistics",
   components: {
@@ -94,12 +95,13 @@ export default {
     }
   },
   mounted() {
-    // this.subTitleCom = findComponentDownward(this, "subTitle");
     this.getData()
   },
   methods: {
     async getData(){
-      const res = await getBeachStatistics();
+      var data = getBeachRolesName();
+      const res = await getBeachStatistics(data);
+      
       if(res.data.data){
         this.labels = []
         this.values = []

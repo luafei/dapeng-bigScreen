@@ -1,3 +1,5 @@
+import store from '@/store'
+
 export function getPickerOption() {
     return {
         shortcuts: [{
@@ -249,4 +251,21 @@ export const generateCode = (num) => {
         code += library.substring(randomPoz, randomPoz + 1);
     }
     return code;
+}
+
+
+export function getBeachRolesName() {
+    var roleResources =  [];
+    store.getters.roles[0].roleResources.map(res => {
+      roleResources.push(res.webUrl)
+    })
+    if (roleResources.includes('GET/bigScreen/sandBeach')) {
+      return {name: ''}
+    }else if(roleResources.includes('GET/bigScreen/sandBeachNA')) {
+      return { name: '南澳' }
+    }else if(roleResources.includes('GET/bigScreen/sandBeachDP')) {
+      return { name: '大鹏' }
+    }else if(roleResources.includes('GET/bigScreen/sandBeachKC')) {
+      return { name: '葵涌' }
+    }
 }

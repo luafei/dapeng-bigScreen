@@ -9,7 +9,7 @@
 <script>
 import { getWarningInfo, getBusAlarmData } from '@/api/dumpTruck'
 import { getBeachAlarmData } from '@/api/beach'
-import { parseTime } from "@/utils/util"
+import { parseTime, getBeachRolesName } from "@/utils/util"
 export default {
     name:"Warning",
     props: {
@@ -52,7 +52,8 @@ export default {
             this.filterData(res.data.data)
         },
         async getBeachAlarmData(){
-            const res = await getBeachAlarmData()
+            var data = getBeachRolesName();
+            const res = await getBeachAlarmData(data);
             this.filterData(res.data.data)
         },
         filterData(arr){

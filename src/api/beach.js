@@ -4,10 +4,11 @@ import request from '@/utils/request'
  * 沙滩统计
  * 
  */
-export function getBeachStatistics() {
+export function getBeachStatistics(params) {
     return request({
         url: '/beach/queryBeachStatistics',
         method: 'get',
+        params
     })
 }
 
@@ -25,10 +26,11 @@ export function getBeachdialog(params) {
 /**
  * 沙滩实时客流量
  */
-export function getCurrentBeachPassengers() {
+export function getCurrentBeachPassengers(params) {
     return request({
         url: '/beach/queryCurrentBeachPassengers',
-        method: 'get'
+        method: 'get',
+        params
     })
 }
 
@@ -71,10 +73,11 @@ export function getParkFlowDistribution(params) {
 /**
  * 获取沙滩视频点位
  */
-export function getBeachVideoList() {
+export function getBeachVideoList(params) {
     return request({
         url: '/beach/queryBeachVideoList',
-        method: 'get'
+        method: 'get',
+        params
     })
 }
 
@@ -118,30 +121,33 @@ export function getBeachDicDetail(id, cancelToken) {
 /**
  * 查询沙滩预警数据
  */
-export function getBeachAlarmData() {
+export function getBeachAlarmData(params) {
     return request({
         url: '/beach/queryBeachAlarmData',
         method: 'get',
+        params
     })
 }
 
 /**
  * 获取停车场视频落点数据
  */
-export function getParkVideoData() {
+export function getParkVideoData(params) {
     return request({
         url: '/beach/queryParkVideoData',
         method: 'get',
+        params
     })
 }
 
 /**
  * 获取停车场地图落点数据
  */
-export function getParkMapData() {
+export function getParkMapData(params) {
     return request({
         url: '/beach/queryParkMapData',
         method: 'get',
+        params
     })
 }
 
@@ -163,30 +169,33 @@ export function getBeachNearbyOrRoadVideo(params) {
 /**
  * 查询沙滩实时环境
  */
-export function getBeachCurrentEnvironment() {
+export function getBeachCurrentEnvironment(params) {
     return request({
         url: '/beach/queryBeachCurrentEnvironment',
-        method: 'get'
+        method: 'get',
+        params
     })
 }
 
 /**
  * 查询沙滩预警排名
  */
-export function getBeachAlarmRanking() {
+export function getBeachAlarmRanking(params) {
     return request({
         url: '/beach/queryBeachAlarmRanking',
-        method: 'get'
+        method: 'get',
+        params
     })
 }
 
 /**
  * 查询沙滩预警
  */
-export function getBeachAlarm() {
+export function getBeachAlarm(params) {
     return request({
         url: '/beach/queryBeachAlarm',
-        method: 'get'
+        method: 'get',
+        params
     })
 }
 

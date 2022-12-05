@@ -54,10 +54,11 @@ export function getBeachList() {
  * 获取热力图沙滩名称
  * 
  */
-export function getHotMapBeachList() {
+export function getHotMapBeachList(params) {
     return request({
         url: '/beach/queryHotMapBeachList',
-        method: 'get'
+        method: 'get',
+        params
     })
 }
 /**

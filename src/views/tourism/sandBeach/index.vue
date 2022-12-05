@@ -106,7 +106,7 @@ import sandBeachRankingDistribution from "@/views/components/sandBeach/sandBeach
 import CarInfoDialog from '@/views/components/carInfoDialog/index.vue'
 import haikanPlayer from '@/components/common/haikanPlayer/index'
 import { pollingTime } from '@/config/config'
-import { findComponentsDownward } from "@/utils/util";
+import { findComponentsDownward, getBeachRolesName } from "@/utils/util";
 import { getBeachVideoList, getBeachDicList, getBeachDicDetail, getParkVideoData, getParkMapData, getBeachNearbyOrRoadVideo} from '@/api/beach'
 import store from '@/store'
 import {mapGetters} from 'vuex'
@@ -223,7 +223,8 @@ export default {
     //   return false
     // },
     async getParkMapData(){
-      const res = await getParkMapData()
+      var val = getBeachRolesName();
+      const res = await getParkMapData(val)
       let data = res.data.data
       data.forEach((item) => {
         item.pointType = 'beachPark'
@@ -232,7 +233,8 @@ export default {
       this.mapPageVm.beachParkList = data
     },
     async getParkVideoData(){ //停车场视频分析点
-      const res = await getParkVideoData()
+      var val = getBeachRolesName();
+      const res = await getParkVideoData(val)
       let data = res.data.data
       data.forEach((item) => {
         item.pointType = 'videoBeachPark'
@@ -242,8 +244,10 @@ export default {
       this.mapPageVm.videoBeachParkList = data
     },
     async fetchParkVideo(){ //停车场视频点
+      var val = getBeachRolesName();
       let postData = {
-        typeName: '停车场'
+        typeName: '停车场',
+        name: val.name
       }
       const res = await getBeachNearbyOrRoadVideo(postData)
       let data = res.data.data
@@ -255,7 +259,8 @@ export default {
       this.mapPageVm.videoParkList = data
     },
     async getBeachVideoAnalysisList(){   //沙滩视频分析点
-      const res = await getBeachVideoList()
+      var val = getBeachRolesName();
+      const res = await getBeachVideoList(val);
       let data = res.data.data
       data.forEach((item) => {
         item.pointType = 'videoAnalysisBeach'
@@ -265,8 +270,10 @@ export default {
       this.mapPageVm.beachVideoAnalysisList = data
     },
     async fetchBeachVideoList(){ //沙滩视频点
+       var val = getBeachRolesName();
       let postData = {               
-        typeName: '沙滩'
+        typeName: '沙滩',
+        name: val.name
       }
       const res = await getBeachNearbyOrRoadVideo(postData)
       let data = res.data.data
@@ -377,10 +384,12 @@ export default {
     },
     async showAroundVideo({name, label}){
       label = label.replace('：暂无','')
-      this.videoTitle = label
+      this.videoTitle = label;
+      var val = getBeachRolesName();
       let postData = {
         beach: name,
-        videoType: label
+        videoType: label,
+        name: val.name
       }
       const res = await getBeachNearbyOrRoadVideo(postData) 
       let data = res.data.data

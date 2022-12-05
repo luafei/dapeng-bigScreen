@@ -7,7 +7,7 @@
 
 <script>
 import SubTitle from "@/components/common/SubTitle";
-import { findComponentDownward } from "@/utils/util";
+import { findComponentDownward,getBeachRolesName } from "@/utils/util";
 import Qinsand from "@/components/echarts/Qinsand";
 import { getCurrentBeachPassengers } from '@/api/beach'
 
@@ -47,7 +47,8 @@ export default {
   },
   methods: {
     async getData(){
-      const res = await getCurrentBeachPassengers()
+      var data = getBeachRolesName();
+      const res = await getCurrentBeachPassengers(data);
       if(res.data.data){
         this.labels = []
         this.values = []

@@ -32,6 +32,7 @@ function filterAsyncRouter(routes, roles) {
     return res
 }
 
+
 export const filterRoles = (roles) => {
     const res = []
     roles.forEach(role => {
@@ -60,7 +61,15 @@ const permission = {
                 let accessedRouters
                 let roles = filterRoles(data.roles)
                 if (roles.includes('admin')) {
-                    accessedRouters = asyncRouterMap
+                    // admin过滤 沙滩-文化旅游-(大鹏/南澳/葵涌)
+                    accessedRouters = asyncRouterMap.map(item => { 
+                        if (item.name == '文化旅游'){ 
+                            item.children = item.children.filter(res => {
+                                return res.name !== 'sandBeachNA' && res.name !== 'sandBeachDP' &&  res.name !== 'sandBeachKC'
+                            })
+                        } 
+                        return item
+                    })
                 } else {
                     accessedRouters = filterAsyncRouter(asyncRouterMap, roles)
                 }

@@ -33,7 +33,7 @@ const busCapacity = () =>
 const login = () =>
     import ( /*webpackChunkNmae:"login"*/ '@/views/login')
 const sandBeach = () =>
-    import ( /*webpackChunkNmae:"sandBeach"*/ '@/views/tourism/sandBeach')
+    import ('@/views/tourism/sandBeach')    
 const scenicSpot = () =>
     import ( /*webpackChunkNmae:"sandBeach"*/ '@/views/tourism/scenicSpot')
 const scenicSpotDetail = () =>
@@ -177,7 +177,7 @@ export const asyncRouterMap = [{
         component: views,
         name: '文化旅游',
         meta: {
-            roles: ['GET/bigScreen/sandBeach']
+            roles: ['GET/bigScreen/sandBeach', 'GET/bigScreen/sandBeachNA', 'GET/bigScreen/sandBeachDP', 'GET/bigScreen/sandBeachKC']
         },
         children: [{
             path: '/sandBeach',
@@ -185,6 +185,30 @@ export const asyncRouterMap = [{
             title: '沙滩',
             meta: {
                 roles: ['GET/bigScreen/sandBeach']
+            },
+            component: sandBeach,
+        }, {
+            path: '/sandBeach',
+            name: 'sandBeachNA',
+            title: '沙滩',
+            meta: {
+                roles: ['GET/bigScreen/sandBeachNA']
+            },
+            component: sandBeach,
+        }, {
+            path: '/sandBeach',
+            name: 'sandBeachDP',
+            title: '沙滩',
+            meta: {
+                roles: ['GET/bigScreen/sandBeachDP']
+            },
+            component: sandBeach,
+        }, {
+            path: '/sandBeach',
+            name: 'sandBeachKC',
+            title: '沙滩',
+            meta: {
+                roles: ['GET/bigScreen/sandBeachKC']
             },
             component: sandBeach,
         }, {
