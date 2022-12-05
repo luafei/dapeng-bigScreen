@@ -285,7 +285,8 @@ export default {
       this.mapPageVm.videoBeachList = data
     },
     async getBeachList(){
-      const res = await getBeachDicList()
+      var val = getBeachRolesName();
+      const res = await getBeachDicList(val)
       let data = res.data.data
       data.forEach((item) => {
         item.pointType = 'beach'

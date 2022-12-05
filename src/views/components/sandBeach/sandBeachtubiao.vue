@@ -53,6 +53,7 @@ export default {
     },
     sourceOp:{
       handler: function(newVal){
+        this.labels = newVal.xAxis.data
         this.initChart()
       },
       deep: true

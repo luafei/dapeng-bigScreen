@@ -106,7 +106,6 @@ export default {
     };
   },
   mounted() {
-    console.log('sandBeachEnvironment', this.showPark)
     var data = getBeachRolesName();
     if (!data.name == '') {
       this.subTitle = '';

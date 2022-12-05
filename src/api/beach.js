@@ -96,10 +96,11 @@ export function getParkVehicleSourceRanking(params) {
 /**
  * 获取沙滩落点数据
  */
-export function getBeachDicList() {
+export function getBeachDicList(params) {
     return request({
         url: '/beach/queryBeachDicList',
-        method: 'get'
+        method: 'get',
+        params
     })
 }
 
