@@ -107,19 +107,19 @@ export default {
       tempImgArr: [
         {
           name: "危化品动态监测",
-          url: "http://113.105.69.185:6868/dist/#/loginzfByZHZX",
+          url: "http://192.168.129.148:9090/dist/#/loginzfByZHZX",
         },
         {
           name: "企业内部视频",
-          url: "http://113.105.69.185:6868/dist/#/loginzfByZHZXSXT",
+          url: "http://192.168.129.148:9090/dist/#/loginzfByZHZXSXT",
         },
         {
           name: "危化品辅助决策",
-          url: "http://113.105.69.185:6868/dist/#/loginzfByZHZXDP",
+          url: "http://192.168.129.148:9090/dist/#/loginzfByZHZXDP",
         },
         {
           name: "预警列表",
-          url: "http://113.105.69.185:6868/dist/#/loginzfByZHZXBJ",
+          url: "http://192.168.129.148:9090/dist/#/loginzfByZHZXBJ",
         },
       ],
       name: "",
