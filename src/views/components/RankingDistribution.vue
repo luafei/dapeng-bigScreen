@@ -16,7 +16,7 @@ import WuLineR from '@/components/echarts/WuLineR.vue'
 import SubTitle from '@/components/common/SubTitle'
 import TimeRoad from '@/components/common/TimeRoad'
 import { getMainRoadRank  } from '@/api/dumpTruck'
-import { parseTime , findComponentDownward, getCurrentTime } from '@/utils/util'
+import { parseTime , findComponentDownward, getCurrentTime, getStreetName } from '@/utils/util'
 import { mapGetters } from 'vuex'
 
 export default {
@@ -77,6 +77,7 @@ export default {
       let postData = {
         dataTime: parseTime(new Date(), '{y}{m}{d}'),
         carType: this.carType,
+        streetName: getStreetName()
       }
       const res = await getMainRoadRank(postData);
       if(res){

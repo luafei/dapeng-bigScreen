@@ -22,7 +22,7 @@
 <script>
 import SubTitle from '@/components/common/SubTitle'
 import { getMainRoadRank,getFlowRanking } from '@/api/dumpTruck'
-import { parseTime, getCurrentTime } from '@/utils/util'
+import { parseTime, getCurrentTime, getStreetName } from '@/utils/util'
 import WuNumber from '@/components/echarts/WuNumber'
 import Rankings from '../echarts/rankings'
 import TimeRoad from "@/components/common/TimeRoad";
@@ -76,6 +76,7 @@ export default {
       let postData = {
         dataTime: this.carType === "dangerCar" ? this.timeType : parseTime(new Date(), '{y}{m}{d}'),
         carType: this.carType,
+        streetName: getStreetName()
       }
       const res = await getMainRoadRank(postData);
       if(res){

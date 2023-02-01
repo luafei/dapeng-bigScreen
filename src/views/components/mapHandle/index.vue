@@ -82,6 +82,7 @@ import  mapHandle from './index.js'
 import { mapGetters } from 'vuex'
 import vehicle from '@/views/mixins/vehicle'
 import { carInteractive } from '@/views/mixins/carInteractive.js'
+import { getStreetName } from '@/utils/util'
 export default {
     props: {
         typePage: {
@@ -121,9 +122,14 @@ export default {
     },
 
     watch: {
-
         typePage(newVal){
-            this.list = mapHandle[newVal]
+            if (getStreetName() == '南澳' && this.$route.path == '/DangerousChemicals') {
+                this.list = mapHandle[newVal].filter(item => {
+                    return item.prop !== 'dangerGoodsEnterprise'
+                })
+            }else {
+                this.list = mapHandle[newVal]
+            }
         },
         carNumObj: {
             handler(newVal){

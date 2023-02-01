@@ -132,7 +132,7 @@ export default {
             type: "category",
             inverse: true, //让y轴数据逆向
             triggerEvent:true, //开启监听点击事件
-            offset:this.maxLen <=3 ? 50:200,
+            offset: 50,
             axisLabel: {
               show: true,
               margin:20,

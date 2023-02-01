@@ -170,7 +170,7 @@ export default {
 </script>
 <style lang="scss" scoped>
     .chart{
-        height: 165px;
+        height: 130px;
         margin-top: 8px;
         margin-bottom: 10px;
         // width: 20.89rem;

@@ -63,11 +63,21 @@ const permission = {
                 if (roles.includes('admin')) {
                     // admin过滤 沙滩-文化旅游-(大鹏/南澳/葵涌)
                     accessedRouters = asyncRouterMap.map(item => { 
+                        if (item.name == '交通运行') {
+                            item.children = item.children.filter(res => {
+                                return res.name !== 'carVehicleNA' && res.name !== 'carVehicleDP' && res.name !== 'carVehicleKC'
+                            })
+                        }
                         if (item.name == '文化旅游'){ 
                             item.children = item.children.filter(res => {
                                 return res.name !== 'sandBeachNA' && res.name !== 'sandBeachDP' &&  res.name !== 'sandBeachKC'
                             })
-                        } 
+                        }
+                        if (item.name == '公共安全') {
+                            item.children = item.children.filter(res => {
+                                return res.name !== 'DangerousChemicalsDP' &&  res.name !== 'DangerousChemicalsKC' && res.name !== 'DangerousChemicalsNA' && res.name !== 'MudTruckDP'&& res.name !== 'MudTruckKC'&& res.name !== 'MudTruckNA'
+                            })
+                        }
                         return item
                     })
                 } else {

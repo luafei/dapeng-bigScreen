@@ -1,4 +1,5 @@
 import store from '@/store'
+import router from '@/router'
 
 export function getPickerOption() {
     return {
@@ -268,4 +269,73 @@ export function getBeachRolesName() {
     }else if(roleResources.includes('GET/bigScreen/sandBeachKC')) {
       return { name: '葵涌' }
     }
+}
+
+export function getVehicleRolesName() {
+    var roleResources =  [];
+    store.getters.roles[0].roleResources.map(res => {
+      roleResources.push(res.webUrl)
+    })
+    if (roleResources.includes('GET/bigScreen/vehicleMonitor')) {
+      return ''
+    }else if(roleResources.includes('GET/bigScreen/vehicleMonitorNA')) {
+      return '南澳'
+    }else if(roleResources.includes('GET/bigScreen/vehicleMonitorDP')) {
+      return '大鹏' 
+    }else if(roleResources.includes('GET/bigScreen/vehicleMonitorKC')) {
+      return '葵涌'
+    }
+}
+
+export function getDangerousChemicalsRolesName() {
+    var roleResources =  [];
+    store.getters.roles[0].roleResources.map(res => {
+      roleResources.push(res.webUrl)
+    })
+    if (roleResources.includes('GET/bigScreen/dangerGoods')) {
+      return ''
+    }else if(roleResources.includes('GET/bigScreen/dangerGoodsDP')) {
+      return '大鹏'
+    }else if(roleResources.includes('GET/bigScreen/dangerGoodsKC')) {
+      return '葵涌' 
+    }else if(roleResources.includes('GET/bigScreen/dangerGoodsNA')) {
+      return '南澳'
+    }
+}
+
+export function getMudTruckRolesName() {
+    var roleResources =  [];
+    store.getters.roles[0].roleResources.map(res => {
+      roleResources.push(res.webUrl)
+    })
+    if (roleResources.includes('GET/bigScreen/dangerGoods')) {
+      return ''
+    }else if(roleResources.includes('GET/bigScreen/mudTruckDP')) {
+      return '大鹏'
+    }else if(roleResources.includes('GET/bigScreen/mudTruckKC')) {
+      return '葵涌' 
+    }else if(roleResources.includes('GET/bigScreen/mudTruckNA')) {
+      return '南澳'
+    }
+}
+
+
+export function getStreetName() {
+    var path = router.app._route.path;
+    var name = '';
+    switch(path){
+        case '/carVehicle':
+            name = getVehicleRolesName();
+            break;
+        case '/DangerousChemicals':
+            name = getDangerousChemicalsRolesName();
+            break;
+        case '/MudTruck':
+            name = getMudTruckRolesName();
+            break;
+        default:
+            name = '';
+            break; 
+    }
+    return name;
 }

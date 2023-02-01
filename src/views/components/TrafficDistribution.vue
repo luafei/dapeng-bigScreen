@@ -20,7 +20,7 @@ import WuBarBlocks from '@/components/echarts/WuBarBlocks'
 import WuBarSubscribe from '@/components/echarts/WuBarSubscribe'
 
 import { getTimeDistribution, getRoadFlowAllRanking } from '@/api/dumpTruck'
-import { getCurrentTime, parseTime } from '@/utils/util'
+import { getCurrentTime, parseTime, getDangerousChemicalsRolesName, getStreetName } from '@/utils/util'
 import { mapGetters } from 'vuex'
 
 export default {
@@ -67,7 +67,7 @@ export default {
     };
   },
   mounted(){
-    this.showIndex = this.index
+    this.showIndex = this.index;
     if(this.carType === "dangerCar"){
       this.timeRoadTitle = "危化品"
     }else if(this.carType === "dumpTruck"){
@@ -91,6 +91,7 @@ export default {
         direction: this.direction,
         roadName: this.roadName,
         roadFlag: this.roadFlag,
+        streetName: getStreetName()
       }
       const res = await getTimeDistribution(postData);
       if(res.data.data.length > 0){
@@ -100,8 +101,7 @@ export default {
           this.labels = res.data.data[0].x;
           this.values = res.data.data;
         })
-      }
-      
+      } 
     },
     async getReservationNumVehicle(){
       let postData = {
@@ -110,6 +110,7 @@ export default {
         direction: this.direction,
         roadName: this.roadName,
         roadFlag: this.roadFlag,
+        streetName: getStreetName()
       }
       const res = await getTimeDistribution(postData);
       if(res){
@@ -131,7 +132,8 @@ export default {
     },
     async getRoadFlowAllRanking(){
       let postData = {
-        dataTime: parseTime(new Date().getTime(), '{y}{m}{d}')
+        dataTime: parseTime(new Date().getTime(), '{y}{m}{d}'),
+        streetName: getDangerousChemicalsRolesName()
       }
       const res = await getRoadFlowAllRanking(postData);
       if(res.data.data){
@@ -180,6 +182,7 @@ export default {
       margin-left: 250px;
       // top:50px;
       // right: 5px;
+      position: relative;
     }
   }
      

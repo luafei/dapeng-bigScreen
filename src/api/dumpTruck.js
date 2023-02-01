@@ -500,3 +500,50 @@ export function getSiteDustData(params) {
         params
     })
 }
+
+/**
+ * 按派出所获取摄像头
+ * @param {*} params 
+ */
+export function getSZLCameras(params) {
+    return request({
+        url: '/traffic/querySZLCameras',
+        method: 'get',
+        params
+    })
+}
+
+/**
+ * 台风防御消息列表
+ */
+export function getTyphoonDefenceTitle(params) {
+    return request({
+        url: '/traffic/queryTyphoonDefenseTitle',
+        method: 'get',
+        params
+    })
+}
+
+
+/**
+ * 台风防御消息列表
+ */
+export function getTyphoonDefenceVideoList(params) {
+    return request({
+        url: '/traffic/queryTyphoonDefenseVideoList',
+        method: 'get',
+        params
+    })
+}
+
+
+/**
+ * 查询台风防御消息列表
+ */
+export function getTyphoonDefenceVideoListByName(params) {
+    return request({
+        url: '/traffic/queryTyphoonDefenseVideoListByName',
+        method: 'get',
+        params
+    })
+}

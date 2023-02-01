@@ -318,7 +318,6 @@ mapHandle.all = [{
         vm.mapPageVm.handlevoice(val)
     }
    }]
-
 //车辆检测页面侧边操作栏
 mapHandle.monitorVihecle = [{
         prop: 'video',

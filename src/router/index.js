@@ -9,7 +9,8 @@ const WayLeave = () =>
 const DemonstrationSection = () =>
     import ( /* webpackChunkNmae: "WayLeave"*/ '@/views/DemonstrationSection') // 示范路段
 const CoastDefence = () => import('@/views/CoastDefence')    // 海防打私
-const RoadRunning = () => import('@/views/WayLeave/roadRunning.vue')    
+const TyphoonDefence = () => import('@/views/TyphoonDefence')  // 台风防御
+const RoadRunning = () => import('@/views/WayLeave/roadRunning.vue')
 const BusOperation = () => import('@/views/WayLeave/busOperation.vue')
 const KeyVehicle = () => import('@/views/WayLeave/keyVehicle.vue')
 const StaticTraffic = () => import('@/views/WayLeave/staticTraffic.vue')
@@ -19,7 +20,7 @@ const RoadMulPortrait = () => import('@/views/WayLeave/roadMulPortrait.vue')
 
 const views = () =>
     import ('@/views')
-const viewsgis = () => import('@/views/indexgis');  
+const viewsgis = () => import('@/views/indexgis') 
 const Cartransit = () =>
     import ( /* webpackChunkNmae: "Cartransit"*/ '@/views/Cartransit')
 const Importcar = () =>
@@ -78,7 +79,7 @@ export const asyncRouterMap = [{
         component: views,
         name: "交通运行",
         meta: {
-            roles: ['GET/bigScreen/vehicleMonitor', 'GET/bigScreen/busCapacity', 'GET/bigScreen/RoadRunning', 'GET/bigScreen/BusOperation', 'GET/bigScreen/KeyVehicle', 'GET/bigScreen/StaticTraffic', 'GET/bigScreen/TrafficPassengerFlow', 'GET/bigScreen/TrafficManageSupport', 'GET/bigScreen/RoadMulPortrait']
+            roles: ['GET/bigScreen/vehicleMonitor', 'GET/bigScreen/vehicleMonitorDP', 'GET/bigScreen/vehicleMonitorKC', 'GET/bigScreen/vehicleMonitorNA', 'GET/bigScreen/busCapacity', 'GET/bigScreen/RoadRunning', 'GET/bigScreen/BusOperation', 'GET/bigScreen/KeyVehicle', 'GET/bigScreen/StaticTraffic', 'GET/bigScreen/TrafficPassengerFlow', 'GET/bigScreen/TrafficManageSupport', 'GET/bigScreen/RoadMulPortrait']
         },
         children: [{
                 path: '/carVehicle',
@@ -87,6 +88,33 @@ export const asyncRouterMap = [{
                 title: '车辆监测',
                 meta: {
                     roles: ['GET/bigScreen/vehicleMonitor']
+                }
+            },
+            {
+                path: '/carVehicle',
+                name: 'carVehicleDP',
+                component: carVehicle,
+                title: '车辆监测',
+                meta: {
+                    roles: ['GET/bigScreen/vehicleMonitorDP']
+                }
+            },
+            {
+                path: '/carVehicle',
+                name: 'carVehicleKC',
+                component: carVehicle,
+                title: '车辆监测',
+                meta: {
+                    roles: ['GET/bigScreen/vehicleMonitorKC']
+                }
+            },
+            {
+                path: '/carVehicle',
+                name: 'carVehicleNA',
+                component: carVehicle,
+                title: '车辆监测',
+                meta: {
+                    roles: ['GET/bigScreen/vehicleMonitorNA']
                 }
             },
             {
@@ -236,7 +264,7 @@ export const asyncRouterMap = [{
         component: views,
         name: '公共安全',
         meta: {
-            roles: ['GET/bigScreen/warningDetails', 'GET/bigScreen/dangerGoods', 'GET/bigScreen/mudTruck', 'GET/bigScreen/demonstrationSection', 'GET/bigScreen/coastDefence'],
+            roles: ['GET/bigScreen/warningDetails', 'GET/bigScreen/dangerGoods', 'GET/bigScreen/dangerGoodsDP', 'GET/bigScreen/dangerGoodsKC', 'GET/bigScreen/dangerGoodsNA', 'GET/bigScreen/mudTruck', 'GET/bigScreen/mudTruckDP', 'GET/bigScreen/mudTruckKC', 'GET/bigScreen/mudTruckNA', 'GET/bigScreen/demonstrationSection', 'GET/bigScreen/coastDefence', 'GET/bigScreen/typhoonDefence'],
         },
         children: [{
                 path: '/warningDetails',
@@ -245,15 +273,43 @@ export const asyncRouterMap = [{
                 meta: {
                     roles: ['GET/bigScreen/warningDetails']
                 },
-                component: warningDetails,
-            }, {
+                component: warningDetails
+            }, 
+            {
                 path: '/DangerousChemicals',
                 name: 'DangerousChemicals',
                 component: DangerousChemicals,
                 title: '危化品车',
                 meta: {
                     roles: ['GET/bigScreen/dangerGoods']
-                },
+                }
+            },
+            {
+                path: '/DangerousChemicals',
+                name: 'DangerousChemicalsDP',
+                component: DangerousChemicals,
+                title: '危化品车',
+                meta: {
+                    roles: ['GET/bigScreen/dangerGoodsDP']
+                }
+            },
+            {
+                path: '/DangerousChemicals',
+                name: 'DangerousChemicalsKC',
+                component: DangerousChemicals,
+                title: '危化品车',
+                meta: {
+                    roles: ['GET/bigScreen/dangerGoodsKC']
+                }
+            },
+            {
+                path: '/DangerousChemicals',
+                name: 'DangerousChemicalsNA',
+                component: DangerousChemicals,
+                title: '危化品车',
+                meta: {
+                    roles: ['GET/bigScreen/dangerGoodsNA']
+                }
             },
             {
                 path: '/MudTruck',
@@ -262,7 +318,34 @@ export const asyncRouterMap = [{
                 component: MudTruck,
                 meta: {
                     roles: ['GET/bigScreen/mudTruck']
-                },
+                }
+            },
+            {
+                path: '/MudTruck',
+                name: 'MudTruckDP',
+                title: '泥头车',
+                component: MudTruck,
+                meta: {
+                    roles: ['GET/bigScreen/mudTruckDP']
+                }
+            },
+            {
+                path: '/MudTruck',
+                name: 'MudTruckKC',
+                title: '泥头车',
+                component: MudTruck,
+                meta: {
+                    roles: ['GET/bigScreen/mudTruckKC']
+                }
+            },
+            {
+                path: '/MudTruck',
+                name: 'MudTruckNA',
+                title: '泥头车',
+                component: MudTruck,
+                meta: {
+                    roles: ['GET/bigScreen/mudTruckNA']
+                }
             },
             {
                 path: '/DemonstrationSection', // 示范路段
@@ -271,7 +354,7 @@ export const asyncRouterMap = [{
                 component :DemonstrationSection,
                 meta: {
                     roles: ['GET/bigScreen/demonstrationSection'],
-                },
+                }
             },
             {
                 path: '/CoastDefence', // 海防打私
@@ -280,7 +363,16 @@ export const asyncRouterMap = [{
                 component :CoastDefence,
                 meta: {
                     roles: ['GET/bigScreen/coastDefence'],
-                },
+                }
+            },
+            {
+                path: '/TyphoonDefence', // 台风防御
+                title: '台风防御',
+                name: 'TyphoonDefence',
+                component :TyphoonDefence,
+                meta: {
+                    roles: ['GET/bigScreen/typhoonDefence'],
+                }
             }
         ]
     },

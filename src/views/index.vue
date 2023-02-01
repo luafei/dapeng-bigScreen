@@ -94,10 +94,12 @@
 </template>
 
 <script>
+import axios from 'axios'
 import {
     getMapVideoPoint,
     getTrafficRank,
-    getMainRoadRank
+    getMainRoadRank,
+    getSZLCameras
 } from '@/api/dumpTruck'
 import MapDialog from '@/components/common/MapDialog'
 import DangerDialog from '@/components/common/DangerDialog'
@@ -122,7 +124,7 @@ import {
     getLiveUrl
 } from '@/api/video'
 import {
-    parseTime
+    parseTime, getVehicleRolesName, getDangerousChemicalsRolesName, getMudTruckRolesName, getStreetName
 } from '@/utils/util'
 import { difference } from 'lodash' 
 import {
@@ -396,7 +398,7 @@ export default {
             tipInfo: {},
             dangerInfo: {},
             currentCrossingIndexCode: '',
-            pointTypeDisabledConvert: ['0', 'level10', 'level20', 'level30','level40', 'videoAnalysisBeach','videoBeach', 'videoBeachPark', 'beachPark', 'videoPark'],  //不需要转换坐标的坐标点类型
+            pointTypeDisabledConvert: ['0', 'level10', 'level20', 'level30','level40', 'videoAnalysisBeach','videoBeach', 'videoBeachPark', 'beachPark', 'videoPark', 'cameraVideo'],  //不需要转换坐标的坐标点类型
             isSelect3DModel: false,  //是否选中3d模型
             videoLiveDialog: false, //监控视频播放
             handleTabType: '', //车辆信息弹框类型
@@ -410,6 +412,7 @@ export default {
         }
     },
     async mounted() {
+        console.log('index.vue');
         this.init();
         this.pageToggle(this.$route)
 
@@ -604,7 +607,10 @@ export default {
                     this.filterLayer(['video','videoPoint','truckGps', 'dangerGoodsEnterprise','gasSite','road','entrance', 'electricFenceDangerCar'])
                     this.checkFeatures.includes('truckGps') && this.handlecarGps(true)
                     break;
-
+                // 台风防御
+                case '/TyphoonDefence':
+                    this.isMapHandle = false;
+                    break;
                 case '/MudTruck':
                     this.MudTruck()
                     this.carType = 'dumpTruck'
@@ -679,12 +685,17 @@ export default {
         },
         onListernerMapClick() {
             map.addEventListener('click', (e) => {
+                console.log('11 features', e.features)
                 try {
                     if (e.features) {
                         let feature = e.features[0];
                         if (!feature) return
                         switch (feature.pointType) {
                             case '0':
+                                this.videoDataType = this.carType !== 'dumpTruck' ? 'dangerCar' : 'dumpTruck'
+                                this.showMapDialog(feature)
+                                break;
+                            case 'cameraVideo':
                                 this.videoDataType = this.carType !== 'dumpTruck' ? 'dangerCar' : 'dumpTruck'
                                 this.showMapDialog(feature)
                                 break;
@@ -1025,7 +1036,8 @@ export default {
                     'videoBeachPark': this.videoBeachParkIcon,
                     'videoPark': this.videoParkIcon,
                     'beachPark': this.beachParkIcon,
-                    'slaked':this.givenIcon
+                    'slaked':this.givenIcon,
+                    'cameraVideo': this.videoIcon
                 }
                 switch (data.pointType) {
                     case '4':
@@ -1047,7 +1059,8 @@ export default {
             let promiseArr = []
             params.forEach(item => {
                 let promise = getMapVideoPoint({
-                    pointType: item
+                    pointType: item,
+                    streetName: getStreetName()
                 })
                 promiseArr.push(promise)
             })
@@ -1164,41 +1177,110 @@ export default {
                 this.removeAllRoad(this.roadStatus)
             }
         },
-        handleAddVideoLive(val) { //新增监控视频点
-            if (val) {
-                addVideoPointDialog({
-                    map: map, //地图变量
-                    // 弹窗
-                    dialog: {
-                        dialogWidth: 537.5, //宽度
-                        dialogHeight: 329, //高度
-                    },
-                    // 聚合
-                    polymerization: {
-                        clusterUrl: this.polymerizationIcon, //图标
-                        scale: 0.7, //图标大小
-                        fontSize: 20, //文字大小
-                        color: new LongMap.Color('#ffffff'), //颜色
-                        // 文字偏移量
-                        offset: {
-                            x: 370,
-                            y: 210,
-                        }
-                    },
-                    // 散点
-                    point: {
-                        dialogPointImg: this.videoIcon, //图标
-                        fusePointImg: this.videoFusionIcon,
-                        scale: 0.3, //图标大小
-                    },
-                }, (e) => {
-                    if(e.videoCode){
-                        this.showVideoOfNotStructureData(e.videoCode, e.name)
+        async handleAddVideoLive(val) { //新增监控视频点
+            var path = this.$route.path;
+            switch(path){
+                case '/carVehicle':
+                    if (getVehicleRolesName() == '') {
+                        // admin角色, 调用原来的(封装好的接口)
+                        this.setAddVideoPointDialog(val);
+                    }else {
+                        // 南澳/大鹏/葵涌
+                        var list = await this.getSZLCamerasData(getVehicleRolesName());
+                        val ? this.renderPoints('cameraVideo', list) : this.removePoints('cameraVideo')
                     }
-                });
-            } else {
-                removeVideoPoint(map);
+                    break;
+                case '/DangerousChemicals':
+                    if (getDangerousChemicalsRolesName() == '') {
+                        // admin角色, 调用原来的(封装好的接口)
+                        this.setAddVideoPointDialog(val);
+                    }else {
+                        // 南澳/大鹏/葵涌
+                        var list = await this.getSZLCamerasData(getDangerousChemicalsRolesName());
+                        val ? this.renderPoints('cameraVideo', list) : this.removePoints('cameraVideo')
+                    }
+                    break;
+                case '/MudTruck':
+                    if (getMudTruckRolesName() == '') {
+                        // admin角色, 调用原来的(封装好的接口)
+                        this.setAddVideoPointDialog(val);
+                    }else {
+                        // 南澳/大鹏/葵涌
+                        var list = await this.getSZLCamerasData(getMudTruckRolesName());
+                        val ? this.renderPoints('cameraVideo', list) : this.removePoints('cameraVideo')
+                    }
+                    break;
+                default:
+                    this.setAddVideoPointDialog(val);
+                    break;            
             }
+        },
+        async getSZLCamerasData(name) {
+            var list;
+            if (name == '南澳') {
+                var { data } = await getSZLCameras({
+                    regionIndexCode: '0959ad59790e4e47b43370b274977527'
+                })
+                list = data.data.data.list;
+            }else if (name == '大鹏') {
+                var { data } = await getSZLCameras({
+                    regionIndexCode: '08c9cc86c0744d86a7460da5a0f8c872'
+                })
+                list = data.data.data.list;
+            }else {
+                // 葵涌
+                var res1 = await getSZLCameras({
+                    regionIndexCode: 'b87223f2cde14470a0618b84fa9d8edc'
+                })
+                list = res1.data.data.data.list;
+                var res2 = await getSZLCameras({
+                    regionIndexCode: 'aaa80f0ac1ed4ab7b694aaff88872c7f'
+                })
+                list = list.concat(res2.data.data.data.list);
+            }
+            list && list.map(item => {
+                    item.pointType = 'cameraVideo';
+                    item.pointCode = item.cameraIndexCode;
+                    item.pointName = item.name;
+                    return item;
+                })
+            return list;
+        },
+        setAddVideoPointDialog(val) {
+                if (val) {
+                    addVideoPointDialog({
+                        map: map, //地图变量
+                        // 弹窗
+                        dialog: {
+                            dialogWidth: 537.5, //宽度
+                            dialogHeight: 329, //高度
+                        },
+                        // 聚合
+                        polymerization: {
+                            clusterUrl: this.polymerizationIcon, //图标
+                            scale: 0.7, //图标大小
+                            fontSize: 20, //文字大小
+                            color: new LongMap.Color('#ffffff'), //颜色
+                            // 文字偏移量
+                            offset: {
+                                x: 370,
+                                y: 210,
+                            }
+                        },
+                        // 散点
+                        point: {
+                            dialogPointImg: this.videoIcon, //图标
+                            fusePointImg: this.videoFusionIcon,
+                            scale: 0.3, //图标大小
+                        },
+                    }, (e) => {
+                        if(e.videoCode){
+                            this.showVideoOfNotStructureData(e.videoCode, e.name)
+                        }
+                    });
+                } else {
+                    removeVideoPoint(map);
+                }
         },
         handleAddVideoPointDialog(val) { //新增视频点位
             val ? this.renderPoints('videoPoint', this.videoList) : this.removePoints('videoPoint')
