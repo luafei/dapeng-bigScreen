@@ -320,6 +320,11 @@ export default {
                   color: #ffffff;
                   border-radius: 20px;
               }
+              .el-input__suffix {
+                i {
+                  font-size: 25px;
+                }
+              }
             }
           }
         }
