@@ -6,7 +6,7 @@
     <div class="daner-left-filter"></div>
     <div class="daner-right-filter"></div>
     <div class="danger-chart">
-      <div class="danger-right">
+      <div class="danger-left">
         <el-row type="flex" class="row-bg" justify="center">
           <el-col>
             <bus-come-in-out class="place"></bus-come-in-out>
@@ -21,7 +21,7 @@
           </el-col>
         </el-row>
       </div>
-      <div class="danger-left">
+      <div class="danger-right">
         <el-row type="flex" class="row-bg" justify="center">
           <el-col>
             <busStatistics
@@ -51,7 +51,7 @@ import Warning from "@/components/content/Warning";
 import busRankingDistribution from "@/views/components/busCapacity/busRankingDistribution";
 import busGuarantee from "@/views/components/busCapacity/busGuarantee";
 import busComeInOut from "@/views/components/busCapacity/busComeInOut";
-import { findComponentsDownward,  } from "@/utils/util";
+import { findComponentsDownward, getStreetName } from "@/utils/util";
 import waterFillBox from "@/views/components/waterFillBox";
 import busStatistics from "@/views/components/busCapacity/busStatistics";
 import busDispatch from "@/views/components/busCapacity/busDispatch";
@@ -110,14 +110,15 @@ export default {
     };
   },
   mounted() {
+     console.log('busCapacity moounted')
     let wuBarArr = findComponentsDownward(this, "wu-bar");
     let wuPie = findComponentsDownward(this, "wu-pie");
     this.compArr = wuBarArr.concat(wuPie);
     this.getDicBusStations()
     this.getBusStationsList()
     this.polling();
-    this.getBusNum()   //获取公交车数量，保持统计统计的实时运营车辆数量一致
     this.$on('on-click-busStations', this.showBusStationInfo)
+    this.getBusNum()   //获取公交车数量，保持统计统计的实时运营车辆数量一致
   },
   methods: {
     getBusNum(){
@@ -192,7 +193,8 @@ export default {
     },
     async getDicBusStations(){
       let postData = {
-        existVideo: 1
+        existVideo: 1,
+        streetName: getStreetName()
       }
       const res = await queryDicBusStations(postData);
       res.data.data.forEach((item) => {
@@ -204,7 +206,8 @@ export default {
     },
      async getBusStationsList(){
       let postData = {
-        existVideo: 0
+        existVideo: 0,
+        streetName: getStreetName()
       }
       const res = await queryDicBusStations(postData);
       res.data.data.forEach((item) => {
@@ -316,7 +319,7 @@ export default {
   justify-content: space-between;
   padding: 0 26px;
 }
-.danger-left {
+.danger-right {
   width: 360px;
   pointer-events: auto;
   .today-flow {
@@ -328,7 +331,7 @@ export default {
     height: 100%;
   }
 }
-.danger-right {
+.danger-left {
   width: 360px;
   pointer-events: auto;
   .row-bg {

@@ -50,11 +50,11 @@ export default {
         },
         {
           title:'公交车总辆',
-          num:'358'
+          num:'430'
         },
         {
           title:'公交路线',
-          num:'67'
+          num:'43'
         }
       ]
     };

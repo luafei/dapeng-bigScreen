@@ -22,7 +22,7 @@
 <script>
 import SubTitle from "@/components/common/SubTitle";
 import { queryPassengerDiagram, queryDicBusStations } from "@/api/dumpTruck";
-import { findComponentDownward, getCurrentTime } from "@/utils/util";
+import { findComponentDownward, getCurrentTime, getStreetName } from "@/utils/util";
 import busLinearGradient from "@/components/echarts/LinearGradient";
 export default {
   name: "busRankingDistribution",
@@ -58,7 +58,8 @@ export default {
   methods: {
     async queryDicBusStations() {
       let postData = {
-        existVideo: 1
+        existVideo: 1,
+        streetName: getStreetName()
       }
       const res = await queryDicBusStations(postData);
       this.busNameList = res.data.data.map((item) => {

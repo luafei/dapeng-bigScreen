@@ -79,7 +79,7 @@ export const asyncRouterMap = [{
         component: views,
         name: "交通运行",
         meta: {
-            roles: ['GET/bigScreen/vehicleMonitor', 'GET/bigScreen/vehicleMonitorDP', 'GET/bigScreen/vehicleMonitorKC', 'GET/bigScreen/vehicleMonitorNA', 'GET/bigScreen/busCapacity', 'GET/bigScreen/RoadRunning', 'GET/bigScreen/BusOperation', 'GET/bigScreen/KeyVehicle', 'GET/bigScreen/StaticTraffic', 'GET/bigScreen/TrafficPassengerFlow', 'GET/bigScreen/TrafficManageSupport', 'GET/bigScreen/RoadMulPortrait']
+            roles: ['GET/bigScreen/vehicleMonitor', 'GET/bigScreen/vehicleMonitorDP', 'GET/bigScreen/vehicleMonitorKC', 'GET/bigScreen/vehicleMonitorNA', 'GET/bigScreen/busCapacity', 'GET/bigScreen/busCapacityDP', 'GET/bigScreen/busCapacityKC', 'GET/bigScreen/busCapacityNA', 'GET/bigScreen/RoadRunning', 'GET/bigScreen/BusOperation', 'GET/bigScreen/KeyVehicle', 'GET/bigScreen/StaticTraffic', 'GET/bigScreen/TrafficPassengerFlow', 'GET/bigScreen/TrafficManageSupport', 'GET/bigScreen/RoadMulPortrait']
         },
         children: [{
                 path: '/carVehicle',
@@ -123,6 +123,33 @@ export const asyncRouterMap = [{
                 title: '公交运力保障',
                 meta: {
                     roles: ['GET/bigScreen/busCapacity']
+                },
+                component: busCapacity
+            },
+            {
+                path: 'busCapacity',
+                name: 'busCapacityDP',
+                title: '公交运力保障',
+                meta: {
+                    roles: ['GET/bigScreen/busCapacityDP']
+                },
+                component: busCapacity
+            },
+            {
+                path: 'busCapacity',
+                name: 'busCapacityKC',
+                title: '公交运力保障',
+                meta: {
+                    roles: ['GET/bigScreen/busCapacityKC']
+                },
+                component: busCapacity
+            },
+            {
+                path: 'busCapacity',
+                name: 'busCapacityNA',
+                title: '公交运力保障',
+                meta: {
+                    roles: ['GET/bigScreen/busCapacityNA']
                 },
                 component: busCapacity
             },

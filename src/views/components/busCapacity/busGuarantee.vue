@@ -29,7 +29,7 @@
 <script>
 import SubTitle from "@/components/common/SubTitle";
 import { queryBusPassengerAlarmList } from "@/api/dumpTruck";
-import { findComponentDownward } from "@/utils/util";
+import { findComponentDownward, getStreetName } from "@/utils/util";
 export default {
   name: "busGuarantee",
   components: {
@@ -61,7 +61,7 @@ export default {
   },
   methods: {
     async queryBusPassengerAlarmList() {
-      const res = await queryBusPassengerAlarmList()
+      const res = await queryBusPassengerAlarmList({streetName: getStreetName()})
       if(res.data.data.length > 0){
         this.activities = res.data.data.map((item)=>{
           return {

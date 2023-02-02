@@ -65,7 +65,7 @@ const permission = {
                     accessedRouters = asyncRouterMap.map(item => { 
                         if (item.name == '交通运行') {
                             item.children = item.children.filter(res => {
-                                return res.name !== 'carVehicleNA' && res.name !== 'carVehicleDP' && res.name !== 'carVehicleKC'
+                                return res.name !== 'carVehicleNA' && res.name !== 'carVehicleDP' && res.name !== 'carVehicleKC' && res.name !== 'busCapacityDP' && res.name !== 'busCapacityKC' && res.name !== 'busCapacityNA'
                             })
                         }
                         if (item.name == '文化旅游'){ 

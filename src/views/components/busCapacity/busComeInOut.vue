@@ -25,7 +25,7 @@
 import WuBar from "@/components/echarts/WuBar";
 import SubTitle from "@/components/common/SubTitle";
 import { queryBusStationPassengerRanking } from "@/api/dumpTruck";
-import { parseTime, getCurrentTime,} from "@/utils/util";
+import { parseTime, getCurrentTime, getStreetName} from "@/utils/util";
 import haikanPlayer from '@/components/common/haikanPlayer/index'
 
 export default {
@@ -62,7 +62,8 @@ export default {
   methods: {
     async queryBusStationPassengerRanking(){
         let postData = {
-          time:this.time
+          time:this.time,
+          streetName: getStreetName()
         }
         const res = await queryBusStationPassengerRanking(postData)
         this.num = [];

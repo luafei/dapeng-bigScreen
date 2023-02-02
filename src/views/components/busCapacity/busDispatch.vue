@@ -42,7 +42,7 @@
 <script>
 import SubTitle from "@/components/common/SubTitle";
 import { queryOrderIssueList , queryBusOrderIssueDetail } from "@/api/dumpTruck";
-import { findComponentDownward } from "@/utils/util";
+import { findComponentDownward, getStreetName } from "@/utils/util";
 export default {
   name: "busDispatch",
   components: {
@@ -79,7 +79,7 @@ export default {
   },
   methods: {
     async queryOrderIssueList(){
-        const res = await queryOrderIssueList()
+        const res = await queryOrderIssueList({streetName: getStreetName()})
         this.busTexts = res.data.data.map((item)=>{
           return{
             text: item.alarmObject + "，" + item.cleanType,

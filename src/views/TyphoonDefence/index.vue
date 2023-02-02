@@ -26,12 +26,16 @@
             <div class="search">
               <el-autocomplete
                 class="inline-input"
-                v-model="state1"
+                v-model="message"
                 :fetch-suggestions="querySearch"
+                :trigger-on-focus="true"
                 placeholder="请输入关键字"
                 @select="handleSelect"
+                clearable
+                @clear="blurForBug()"
                 >
                 <i slot="prefix" class="el-input__icon el-icon-search"></i>
+                <!-- <i slot="suffix" class="el-input__icon el-icon-circle-close" @click="delMessage"></i> -->
               </el-autocomplete>
             </div>
             
@@ -103,7 +107,7 @@ export default {
           label: 'name',
           children: 'zones'
         },
-        state1: ''
+        message: ''
     };
   },
   inject: ['mapPageVm'],
@@ -111,7 +115,6 @@ export default {
       DpHeader
   },
   mounted() {
-    console.log('mounted');
     this.getTyphoonList();
   },
   methods: {
@@ -180,7 +183,6 @@ export default {
         cb(allData.data.data);
     },
     handleSelect(item) {
-        console.log(item);
         item.pointCode = item.videoCode;
         item.pointType = 'cameraVideo';
         item.pointName = item.name;
@@ -188,10 +190,25 @@ export default {
         item.longitude =  item.lon;
         this.mapPageVm.removePoints('cameraVideo')
         this.mapPageVm.renderPoints('cameraVideo', [item])
+    },
+    blurForBug() {
+      // this.message = '';
+      document.activeElement.blur()
     }
   }
 };
 </script>
+
+<style lang="scss">
+.el-autocomplete-suggestion{
+  li {
+    color: #ffffff;
+    &:hover {
+      background-color: #0f2034;
+    }
+  }
+}
+</style>
 
 <style lang="scss" scoped>
 .typhoonDefence {
@@ -310,6 +327,30 @@ export default {
           width: 100%;
           height: calc(100% - 80px);
           overflow-y: auto;
+          ::v-deep .el-tree {
+            background-color: #0c1d31;
+            .el-tree-node
+            {
+              &:focus {
+                &>.el-tree-node__content {
+                  background-color: #000000;
+                }
+              }
+              &.is-current {
+                & > .el-tree-node__content{
+                 background-color: #000000;
+                }
+              }
+            }
+            .el-tree-node__label {
+              color: #ffffff;
+            }
+            .el-tree-node__content{
+              &:hover {
+                background-color: #000000;
+              }
+            }
+          }
         }
         
     }
@@ -318,7 +359,5 @@ export default {
         height: 100%;
     }
 }
-
-
 
 </style>

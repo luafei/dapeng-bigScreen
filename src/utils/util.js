@@ -320,6 +320,23 @@ export function getMudTruckRolesName() {
 }
 
 
+export function getBusCapacityRolesName() {
+    var roleResources =  [];
+    store.getters.roles[0].roleResources.map(res => {
+      roleResources.push(res.webUrl)
+    })
+    if (roleResources.includes('GET/bigScreen/busCapacity')) {
+      return ''
+    }else if(roleResources.includes('GET/bigScreen/busCapacityDP')) {
+      return '大鹏'
+    }else if(roleResources.includes('GET/bigScreen/busCapacityKC')) {
+      return '葵涌' 
+    }else if(roleResources.includes('GET/bigScreen/busCapacityNA')) {
+      return '南澳'
+    }
+}
+
+
 export function getStreetName() {
     var path = router.app._route.path;
     var name = '';
@@ -332,6 +349,9 @@ export function getStreetName() {
             break;
         case '/MudTruck':
             name = getMudTruckRolesName();
+            break;
+        case '/busCapacity':
+            name = getBusCapacityRolesName();
             break;
         default:
             name = '';

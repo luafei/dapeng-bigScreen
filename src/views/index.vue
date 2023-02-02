@@ -124,7 +124,7 @@ import {
     getLiveUrl
 } from '@/api/video'
 import {
-    parseTime, getVehicleRolesName, getDangerousChemicalsRolesName, getMudTruckRolesName, getStreetName
+    parseTime, getVehicleRolesName, getDangerousChemicalsRolesName, getMudTruckRolesName, getBusCapacityRolesName, getStreetName
 } from '@/utils/util'
 import { difference } from 'lodash' 
 import {
@@ -162,6 +162,9 @@ window.maplayers = {
     dumpTrucksVihecle:false,
     dumpTrucksguiji:false
 }
+
+window.map = {};
+
 // window.vehicleMarkerLayers = {
 //     carGps: null, //泥头车布点对象
 //     truckGps: null, //危化品布点对象
@@ -1210,6 +1213,16 @@ export default {
                         val ? this.renderPoints('cameraVideo', list) : this.removePoints('cameraVideo')
                     }
                     break;
+                case '/busCapacity':
+                    if (getBusCapacityRolesName() == '') {
+                        // admin角色, 调用原来的(封装好的接口)
+                        this.setAddVideoPointDialog(val);
+                    }else {
+                        // 南澳/大鹏/葵涌
+                        var list = await this.getSZLCamerasData(getBusCapacityRolesName());
+                        val ? this.renderPoints('cameraVideo', list) : this.removePoints('cameraVideo')
+                    }
+                    break;    
                 default:
                     this.setAddVideoPointDialog(val);
                     break;            
