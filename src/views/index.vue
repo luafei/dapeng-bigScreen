@@ -163,7 +163,6 @@ window.maplayers = {
     dumpTrucksguiji:false
 }
 
-window.map = {};
 
 // window.vehicleMarkerLayers = {
 //     carGps: null, //泥头车布点对象
