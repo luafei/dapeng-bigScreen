@@ -139,6 +139,7 @@ export default {
       timeType1:'year',
       labels: [],
       values: [],
+      handleBarCode: '',
       showone:false,
       show:false,
       loading: false,
@@ -201,22 +202,22 @@ export default {
             label: "受理时间",
             prop: "acceptDate",
             type: "date",
-            format: "yyyy-MM-dd hh:mm:ss",
-            valueFormat: "yyyy-MM-dd hh:mm:ss",
+            format: "yyyy-MM-dd HH:mm:ss",
+            valueFormat: "yyyy-MM-dd HH:mm:ss",
           },
           {
             label: "承诺时间",
             prop: "promiseDate",
             type: "date",
-            format: "yyyy-MM-dd hh:mm:ss",
-            valueFormat: "yyyy-MM-dd hh:mm:ss",
+            format: "yyyy-MM-dd HH:mm:ss",
+            valueFormat: "yyyy-MM-dd HH:mm:ss",
           },
           {
             label: "办结时间",
             prop: "resultDate",
             type: "date",
-            format: "yyyy-MM-dd hh:mm:ss",
-            valueFormat: "yyyy-MM-dd hh:mm:ss",
+            format: "yyyy-MM-dd HH:mm:ss",
+            valueFormat: "yyyy-MM-dd HH:mm:ss",
           },
           // {
           //   label: "视频播放",
@@ -256,22 +257,22 @@ export default {
             label: "受理时间",
             prop: "acceptDate",
             type: "date",
-            format: "yyyy-MM-dd hh:mm:ss",
-            valueFormat: "yyyy-MM-dd hh:mm:ss",
+            format: "yyyy-MM-dd HH:mm:ss",
+            valueFormat: "yyyy-MM-dd HH:mm:ss",
           },
           {
             label: "承诺时间",
             prop: "promiseDate",
             type: "date",
-            format: "yyyy-MM-dd hh:mm:ss",
-            valueFormat: "yyyy-MM-dd hh:mm:ss",
+            format: "yyyy-MM-dd HH:mm:ss",
+            valueFormat: "yyyy-MM-dd HH:mm:ss",
           },
           {
             label: "办结时间",
             prop: "resultDate",
             type: "date",
-            format: "yyyy-MM-dd hh:mm:ss",
-            valueFormat: "yyyy-MM-dd hh:mm:ss",
+            format: "yyyy-MM-dd HH:mm:ss",
+            valueFormat: "yyyy-MM-dd HH:mm:ss",
           },
           {
             label: "视频播放",
@@ -283,12 +284,9 @@ export default {
     };
   },
   mounted() {
-  //   this.values = [4, 6, 9, 14, 11],
-  //   this.labels01 = [0,3,6,9,12],
-  //   this.values01 = [520,420,500,1400,400],
    this.subTitleCom = findComponentDownward(this, "subTitle");
-  this.getList()
-  this.getData()
+   this.getList()
+   this.getData()
   },
   methods: { 
     handlecellclick(row, column, cell, event) {
@@ -380,14 +378,15 @@ export default {
       this.dialogVisible = true
       this.loading = true;
       let code = this.filterCode(row.name)
-      this.getLable(code)
+      this.handleBarCode = code;
+      this.getLable()
     },
-    async getLable(code) {
+    async getLable() {
       let postData = {
          page: this.page.currentPage,
          pageSize: this.page.pageSize,
          timeType: this.timeType,
-         queryParam:code,
+         queryParam: this.handleBarCode
       }
       const res = await getSourceList(postData)
       let {total, data} = res.data.data

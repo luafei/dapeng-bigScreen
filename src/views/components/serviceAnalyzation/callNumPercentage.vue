@@ -149,22 +149,22 @@ export default {
                         label: "受理时间",
                         prop: "acceptDate",
                         type: "date",
-                        format: "yyyy-MM-dd hh:mm:ss",
-                        valueFormat: "yyyy-MM-dd hh:mm:ss",
+                        format: "yyyy-MM-dd HH:mm:ss",
+                        valueFormat: "yyyy-MM-dd HH:mm:ss",
                     },
                     {
                         label:"承诺时间",
                         prop:"promiseDate",
                         type:"date",
-                        format:"yyyy-MM-dd hh:mm:ss",
-                        valueFormat:"yyyy-MM-dd hh:mm:ss",
+                        format:"yyyy-MM-dd HH:mm:ss",
+                        valueFormat:"yyyy-MM-dd HH:mm:ss",
                     },
                     {
                         label:"办结时间",
                         prop:"resultDate",
                         type:"date",
-                        format:"yyyy-MM-dd hh:mm:ss",
-                        valueFormat:"yyyy-MM-dd hh:mm:ss"
+                        format:"yyyy-MM-dd HH:mm:ss",
+                        valueFormat:"yyyy-MM-dd HH:mm:ss"
                     },
                     // {
                     //     label: "视频播放",

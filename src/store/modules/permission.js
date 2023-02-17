@@ -75,7 +75,8 @@ const permission = {
                         }
                         if (item.name == '公共安全') {
                             item.children = item.children.filter(res => {
-                                return res.name !== 'DangerousChemicalsDP' &&  res.name !== 'DangerousChemicalsKC' && res.name !== 'DangerousChemicalsNA' && res.name !== 'MudTruckDP'&& res.name !== 'MudTruckKC'&& res.name !== 'MudTruckNA'
+                                return res.name !== 'DangerousChemicalsDP' &&  res.name !== 'DangerousChemicalsKC' && res.name !== 'DangerousChemicalsNA' 
+                                    && res.name !== 'MudTruckDP'&& res.name !== 'MudTruckKC'&& res.name !== 'MudTruckNA' && res.name !== 'TyphoonDefence' 
                             })
                         }
                         return item
