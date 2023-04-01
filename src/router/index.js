@@ -42,7 +42,9 @@ const scenicSpotDetail = () =>
 
 const warningDetails = () =>
     import ( /*webpackChunkNmae:"warningDetails"*/ '@/views/warningDetails')
-const blockData = () => import('@/views/blockData')    
+const blockData = () => import('@/views/blockData')
+const largeScreenAnalysis = () => import("@/views/blockData/largeScreenAnalysis")
+const dapengWisdomNet = () => import("@/views/blockData/dapengWisdomNet")
 const serviceAnalyzation = () =>
     import ( /*webpackChunkNmae:"govSerivce"*/ '@/views/govService/serviceAnalyzation')
 const businessanalysis = () =>
@@ -436,7 +438,7 @@ export const asyncRouterMap = [{
         component: views,
         name: '社会治理',
         meta: {
-            roles: ['GET/bigScreen/socialGovernance/blockData'],
+            roles: ['GET/bigScreen/socialGovernance/blockData', 'GET/bigScreen/largeScreenAnalysis', 'GET/bigScreen/dapengWisdomNet'],
         },
         children: [
             {
@@ -446,6 +448,24 @@ export const asyncRouterMap = [{
                 component: blockData,
                 meta: {
                     roles: ['GET/bigScreen/socialGovernance/blockData']
+                }
+            },
+            {
+                path: '/largeScreenAnalysis',
+                name: 'largeScreenAnalysis',
+                title: '大屏分析',
+                component: largeScreenAnalysis,
+                meta: {
+                    roles: ['GET/bigScreen/largeScreenAnalysis']
+                }
+            },
+            {
+                path: '/dapengWisdomNet',
+                name: 'dapengWisdomNet',
+                title: '大鹏智网',
+                component: dapengWisdomNet,
+                meta: {
+                    roles: ['GET/bigScreen/dapengWisdomNet']
                 }
             }
         ]
